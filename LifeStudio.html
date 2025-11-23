@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<head>
+    <title>Booking Page</title>
+</head>
+<style>
+    .container1{
+        width: 400px;
+        margin: 0;
+        padding: 10px;
+        height: 550px;
+        background: linear-gradient(to bottom, #fffbf2, #F5DFA8);
+        color:rgb(103, 28, 28);
+        border-radius: 20px;
+        font-family:Arial;
+    }
+    .container2 {
+        width: 300px;
+        margin: 10px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 20px;
+        margin-top: 40px;
+        font-family: Arial, sans-serif;
+    }
+    .container3{
+        width: 300px;
+        margin: 10px auto;
+        padding: 10;
+        height: 190px;
+        background:#F6ECD0;
+        color:rgb(103, 28, 28);
+        border-radius: 20px;
+        font-family:Arial;
+    }
+
+</style>
+</head>
+
+<body>
+<!-- CONTAINER 1 -->
+<div class="container1">
+    <br>
+    <b style="font-size: 250%; text-align: left; padding-left: 35px;">BOOKINGS</b>
+    <p style="text-align: left; padding-left: 35px;">PLEASE FILL IN DETAILS</p>
+    <!-- CONTAINER 2 -->
+    <div class="container2">
+    <b style="font-size:100%;">SERVICES</b>
+    <p style="font-size:75%;">Select service you will inquire</p>
+    <label for="services"></label>
+        <select id="services" name="services" required style=width:300px; height: 30px; padding:5px;>
+            <option value="option"></option>
+            <option value="wedding">WEDDING</option>
+            <option value="debut">DEBUT</option>
+            <option value="graduation">GRADUATION</option>
+            <option value="schoolEvents">SCHOOL EVENTS</option>
+            <option value="ordination">ORDINATION</option>
+            <option value="schoolID">SCHOOL ID</option>
+            <option value="IDmaterial">ID MATERIALS</option>
+        </select>
+    <!-- CONTAINER 3 -->
+        <div class="container3">
+        <br>
+        <form action="/submit-booking" method="post">
+            <p style="font-size:75%; text-align: left; padding-left: 23px;">Select date</p>
+            <label for="date" style="font-size:125%; text-align: left; padding-left: 23px;">Enter date</label>
+            <br>
+            <br>
+            <center>
+            <input type="date" id="date" name="date" required style="background: none; border-radius: 1px; color: rgb(103, 28, 28); width:250px; height: 30px;">
+            </center>
+            <br>
+            <input type="button" value="OK"
+            style="font-size:75%; background: none; border: none; color: rgb(103, 28, 28); cursor: pointer; float: right;  margin-right: 17px;">
+            <input type="button" value="Cancel"
+            style="font-size:75%; background: none; border: none; color: rgb(103, 28, 28); cursor: pointer; float: right;">
+
+        </div>
+    <center>
+    <input type="button" value="Submit" 
+       style="font-size:100%; background-color:#F5DFA8; border-radius:50px; padding:10px; width:150px; font-weight:bold; cursor: pointer;">
+
+    </center>
+    </div>
+        
+    </form>
+</div>
+</body>
+</html>
