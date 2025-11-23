@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Seamless Scroll</title>
+<style>
+  body {
+    background: #F6ECD0;
+    text-align: center;
+  }
+
+  /* BIG CENTER TITLE */
+  .title {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    font: Orelega One;
+    transform: translateX(-50%);
+    font-size: 180px;
+    font-weight: 900;
+    color: #4A1E1E;
+    z-index: 10;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .marquee {
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin-top: 300px;
+    background-color: #F6DC9B;
+    
+  }
+
+  .marquee-content {
+    display: flex;
+    animation: scroll 12s linear infinite;
+  }
+
+  .marquee-content img {
+    width: 240px;
+    margin-right: 70px;
+    border-radius: 50px;
+  }
+
+  /* Keyframe for smooth infinite scroll */
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-25%);
+    }
+  }
+  
+</style>
+</head>
+<body>
+
+  <h1 class="title">ORDINATION</h1>
+
+<div class="marquee">
+  <div class="marquee-content">
+    
+    <img src="https://bit.ly/44iwoot">
+    <img src="https://bit.ly/4plexVX">
+    <img src="https://bit.ly/3Kgz0fS">
+    <img src="https://bit.ly/4piiBWY">
+
+    <!-- duplicates para mukhang infinite -->
+    <img src="https://bit.ly/44iwoot">
+    <img src="https://bit.ly/4plexVX">
+    <img src="https://bit.ly/3Kgz0fS">
+    <img src="https://bit.ly/4piiBWY">
+
+    <img src="https://bit.ly/44iwoot">
+    <img src="https://bit.ly/4plexVX">
+    <img src="https://bit.ly/3Kgz0fS">
+    <img src="https://bit.ly/4piiBWY">
+
+    <img src="https://bit.ly/44iwoot">
+    <img src="https://bit.ly/4plexVX">
+    <img src="https://bit.ly/3Kgz0fS">
+    <img src="https://bit.ly/4piiBWY">
+
+    <img src="https://bit.ly/44iwoot">
+    <img src="https://bit.ly/4plexVX">
+    <img src="https://bit.ly/3Kgz0fS">
+    <img src="https://bit.ly/4piiBWY">
+
+    <img src="https://bit.ly/44iwoot">
+    <img src="https://bit.ly/4plexVX">
+    <img src="https://bit.ly/3Kgz0fS">
+    <img src="https://bit.ly/4piiBWY">
+
+    <img src="https://bit.ly/44iwoot">
+    <img src="https://bit.ly/4plexVX">
+    <img src="https://bit.ly/3Kgz0fS">
+    <img src="https://bit.ly/4piiBWY">
+
+    <img src="https://bit.ly/44iwoot">
+    <img src="https://bit.ly/4plexVX">
+    <img src="https://bit.ly/3Kgz0fS">
+    <img src="https://bit.ly/4piiBWY">
+  </div>
+</div>
+
+  <input type="button" value="Submit" 
+       style="font-size:100%; background-color:#F5DFA8; border-radius:50px; padding:10px; width:150px; font-weight:bold; cursor: pointer; margin-top: 670px;">
+
+</body>
+</html>
+
