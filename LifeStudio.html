@@ -46,9 +46,10 @@
     <div class="container2">
     <b style="font-size:100%;">SERVICES</b>
     <p style="font-size:75%;">Select service you will inquire</p>
+    <form action="/submit-booking" method="post">
     <label for="services"></label>
-        <select id="services" name="services" required style=width:300px; height: 30px; padding:5px;>
-            <option value="option"></option>
+        <select id="services" name="services" required style="width:300px; height: 30px; padding:5px;">
+            <option value="option" selected disabled>-- OR --</option>
             <option value="wedding">WEDDING</option>
             <option value="debut">DEBUT</option>
             <option value="graduation">GRADUATION</option>
@@ -60,16 +61,15 @@
     <!-- CONTAINER 3 -->
         <div class="container3">
         <br>
-        <form action="/submit-booking" method="post">
             <p style="font-size:75%; text-align: left; padding-left: 23px;">Select date</p>
             <label for="date" style="font-size:125%; text-align: left; padding-left: 23px;">Enter date</label>
             <br>
             <br>
             <center>
-            <input type="date" id="date" name="date" required style="background: none; border-radius: 1px; color: rgb(103, 28, 28); width:250px; height: 30px;">
+                <input type="date" id="date" name="date" required style="background: none; border-radius: 1px; color: rgb(103, 28, 28); width:250px; height: 30px;">
             </center>
             <br>
-            <input type="button" value="OK"
+            <input type="submit" value="OK"
             style="font-size:75%; background: none; border: none; color: rgb(103, 28, 28); cursor: pointer; float: right;  margin-right: 17px;">
             <input type="button" value="Cancel"
             style="font-size:75%; background: none; border: none; color: rgb(103, 28, 28); cursor: pointer; float: right;">
