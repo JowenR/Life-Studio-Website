@@ -1,0 +1,211 @@
+body {
+    background: linear-gradient(90deg, #F2F2F2 0.22%, #F1E1B8 48.08%, #B8AD8E 99.93%);
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+}
+
+h2 {
+    color: #573737;
+    font-family: Montserrat, sans-serif;
+    text-align: center;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding-top: 80px;
+    padding-bottom: 0;
+    margin: 0;
+}
+
+h3 {
+    color: #000;
+    font-family: Montserrat;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0 0 10px 0;
+}
+
+p {
+    color: rgba(0, 0, 0, 0.74);
+    font-family: Roboto;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.wedding,
+.debut,
+.Schoolcere,
+.school-ID,
+.graduation,
+.Ordination, 
+.idmaterials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 65px 0;
+}
+
+.debut,
+.Schoolcere,
+.school-ID {
+    flex-direction: row-reverse;
+}
+
+/* .service-cont {
+    height: 400px;
+    color: rgba(0, 0, 0, 0.74);
+    font-family: Roboto, sans-serif;
+    font-size: 29px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    margin-right: 10%;
+    padding-top: 0;
+} */
+
+.wed-cont, 
+.grad-cont,
+.ordi-cont,
+.idmaterials-cont {
+    margin-left: 10%;
+    margin-right: 0;
+}
+
+.deb-cont,
+.schoolcere-cont,
+.school-ID-cont {
+    margin-right: 150px;
+}
+
+.pic {
+    position: relative;
+    width: 450px;
+    height: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pic-id {
+    position: relative;
+    width: 475;
+    height: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg {
+    position: absolute;
+    width: 550px;
+    height: 375px;
+    border-radius: 30px;
+    background: #E6DEC8;
+    z-index: 0;
+}
+
+.bg-id {
+    position: absolute;
+    width: 347px;
+    height: 387px;
+    border-radius: 30px;
+    background: #E6DEC8;
+    z-index: 0;
+}
+
+img {
+    width: 500px;
+    height: auto;
+    border-radius: 40px;
+    object-fit: cover;
+    flex-shrink: 0;
+    line-height: 0;
+    position: relative;
+    padding: 2%;
+    z-index: 1;
+    display: block;
+}
+
+.pic-id img {
+    width: auto;
+    height: 347px;
+    border-radius: 40px;
+    object-fit: cover;
+    flex-shrink: 0;
+    line-height: 0;
+    position: relative;
+    padding: 2%;
+    z-index: 1;
+    display: block;
+}
+
+.Button {
+    display: flex;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+.btn {
+    display: flex;
+    width: 160px;
+    height: 45px;
+    padding: 11px 17px;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    background: #F5DFA8;
+    box-shadow: -9px 18px 4px 0 rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    color: #000;
+    text-align: center;
+    font-family: "Azeret Mono", monospace;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    border: none;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    background: #F6ECD0;
+}
+
+.btn:active {
+    background: #9A927D;
+    transform: translateY(4px);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.25);
+}
+
+.wed_line,
+.grad-line,
+.debut_line,
+.schoolcere_line,
+.school-ID_line,
+.ordi_line {
+    width: 820px;
+    height: 3px;
+    background: #000;
+    border: none;
+}
+
+.wed_line, 
+.grad-line ,
+.ordi_line{
+    margin-left: auto;
+    margin-right: 70px;
+}
+
+.debut_line,
+.schoolcere_line,
+.school-ID_line {
+    margin-left: 60px;
+    margin-right: auto;
+}
