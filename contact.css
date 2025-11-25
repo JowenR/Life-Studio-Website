@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #c8c0c0;
+}
+
+header {
+    width: 100%;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 10px 50px;
+}
+
+.logo img {
+    height: 100px;
+}
+
+nav a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.contact-section {
+    width: 100%;
+    background: linear-gradient(to right, #f4f4f4, #e8d9ba);
+    padding: 56px 300px;
+}
+
+.contact-section h1 {
+    text-align: left;
+    font-size: 32px;
+    margin-bottom: 50px;
+    font-weight: bold;
+}
+
+.contact-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.left-info {
+    width: 50%;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+    mix-blend-mode: multiply;
+}
+
+.icons img {
+    height: 50px;
+    width: 50px;
+}
+
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 10px solid #000;
+    border-radius: 50%;
+    margin-right: 55px;
+}
+
+.info-btn {
+    background: #ceb69e;
+    border-radius: 20px;
+    padding: 20px;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    /* NEW — makes all boxes the same size */
+    width: 260px;       /* adjust to your preferred width */
+    height: 70px;       /* adjust as needed */
+    text-align: center;
+}
+
+
+.right-info {
+    width: 50%;
+    text-align: center;
+}
+
+.big-circle {
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    border: 5px solid #4f3c2e;
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.big-circle img {
+    width: 80%;
+    mix-blend-mode: multiply;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #000;
+    background: #ceb69e;
+    margin-bottom: 15px;
+}
+
+.contact-form textarea {
+    height: 263px;
+    resize: none;
+}
+
+.contact-form button {
+    padding: 10px 25px;
+    background: #f2e9cd;
+    border-radius: 15px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
