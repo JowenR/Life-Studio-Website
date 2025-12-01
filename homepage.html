@@ -58,9 +58,11 @@
             color: #333;
             font-size: 18px;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
             font-family: 'Montserrat', sans-serif;
             cursor: pointer;
+            position: relative;
+            padding-bottom: 5px;
         }
 
         nav a:hover {
@@ -70,6 +72,23 @@
         nav a.active {
             color: #8B0000;
             font-weight: 600;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #8B0000;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
         }
 
         /* Hero Section */
@@ -106,10 +125,40 @@
             align-items: center;
         }
 
-        .star-image {
+        .star-rating {
+            display: flex;
+            gap: 10px;
+            direction: rtl;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            cursor: pointer;
             width: 40px;
             height: 40px;
-            object-fit: contain;
+            background-image: url('images/Star.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: all 0.3s ease;
+            filter: grayscale(100%) brightness(0.8);
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            filter: grayscale(0%) brightness(1);
+        }
+
+        .star-rating:hover label {
+            filter: grayscale(100%) brightness(0.8);
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            filter: grayscale(0%) brightness(1);
         }
 
         .cta-buttons {
@@ -281,15 +330,15 @@
 </head>
 <body>
     <header>
-        <div class="logo" onclick="navigateToPage('homepage.html')">
+        <a href="homepage.html" class="logo">
             <img src="images/LS Logo.png" alt="Life Studio - Solutions Multimedias">
-        </div>
+        </a>
         <nav>
             <ul>
-                <li><a href="#" onclick="navigateToPage('homepage.html')" class="nav-link active" data-page="home">Home</a></li>
-                <li><a href="#" onclick="navigateToPage('about_page.html')" class="nav-link" data-page="about">About</a></li>
-                <li><a href="#" onclick="navigateToPage('services.html')" class="nav-link" data-page="services">Services</a></li>
-                <li><a href="#" onclick="navigateToPage('contact.html')" class="nav-link" data-page="contact">Contact</a></li>
+                <li><a href="homepage.html" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="about_page.html" class="nav-link" data-page="about">About</a></li>
+                <li><a href="services.html" class="nav-link" data-page="services">Services</a></li>
+                <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -303,21 +352,28 @@
                 and Creativity.
             </h1>
             <div class="stars">
-                <img src="images/Star.png" alt="Star" class="star-image">
-                <img src="images/Star.png" alt="Star" class="star-image">
-                <img src="images/Star.png" alt="Star" class="star-image">
-                <img src="images/Star.png" alt="Star" class="star-image">
-                <img src="images/Star.png" alt="Star" class="star-image">
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1"></label>
+                </div>
             </div>
             <div class="cta-buttons">
-                <button class="btn" onclick="navigateToPage('services.html')">
+                <a href="services.html" class="btn">
                     View Work
                     <span class="arrow">→</span>
-                </button>
-                <button class="btn" onclick="navigateToPage('contact.html')">
+                </a>
+                <a href="contact.html" class="btn">
                     Contact Us
                     <span class="arrow">→</span>
-                </button>
+                </a>
             </div>
         </div>
 
@@ -332,12 +388,6 @@
     </section>
 
     <script>
-        // Navigation function
-        function navigateToPage(page) {
-            // Navigate to the specified page
-            window.location.href = page;
-        }
-
         // Set active navigation link based on current page
         function setActiveNav() {
             const currentPage = window.location.pathname.split('/').pop() || 'homepage.html';
@@ -345,8 +395,8 @@
             
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                const linkPage = link.getAttribute('onclick').match(/'([^']+)'/)[1];
-                if (linkPage === currentPage) {
+                const href = link.getAttribute('href');
+                if (href === currentPage || (currentPage === '' && href === 'homepage.html')) {
                     link.classList.add('active');
                 }
             });
@@ -355,20 +405,20 @@
         // Call setActiveNav when page loads
         window.addEventListener('DOMContentLoaded', setActiveNav);
 
-        // Smooth scroll for anchor links (if needed for same-page sections)
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href !== '#') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+        // Debug function - check if files exist
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    console.log('Attempting to navigate to:', href);
+                    
+                    // Check if it's the services link
+                    if (href.includes('service')) {
+                        console.log('Services link clicked');
+                        // Let the default behavior happen
                     }
-                }
+                });
             });
         });
     </script>
