@@ -37,6 +37,7 @@
         .logo {
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         .logo img {
@@ -57,12 +58,37 @@
             color: #333;
             font-size: 18px;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
             font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            position: relative;
+            padding-bottom: 5px;
         }
 
         nav a:hover {
             color: #8B0000;
+        }
+
+        nav a.active {
+            color: #8B0000;
+            font-weight: 600;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #8B0000;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
         }
 
         /* Hero Section */
@@ -99,10 +125,40 @@
             align-items: center;
         }
 
-        .star-image {
+        .star-rating {
+            display: flex;
+            gap: 10px;
+            direction: rtl;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            cursor: pointer;
             width: 40px;
             height: 40px;
-            object-fit: contain;
+            background-image: url('images/Star.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: all 0.3s ease;
+            filter: grayscale(100%) brightness(0.8);
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            filter: grayscale(0%) brightness(1);
+        }
+
+        .star-rating:hover label {
+            filter: grayscale(100%) brightness(0.8);
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            filter: grayscale(0%) brightness(1);
         }
 
         .cta-buttons {
@@ -274,11 +330,15 @@
 </head>
 <body>
     <header>
-        <div class="logo">
+        <a href="homepage.html" class="logo">
             <img src="images/LS Logo.png" alt="Life Studio - Solutions Multimedias">
-        </div>
+        </a>
         <nav>
             <ul>
+                <li><a href="homepage.html" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="about_page.html" class="nav-link" data-page="about">About</a></li>
+                <li><a href="services.html" class="nav-link" data-page="services">Services</a></li>
+                <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
                 <li><a href="homepage.html">Home</a></li>
                 <li><a href="about_page.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -296,18 +356,25 @@
                 and Creativity.
             </h1>
             <div class="stars">
-                <img src="images/Star.png" alt="Star" class="star-image">
-                <img src="images/Star.png" alt="Star" class="star-image">
-                <img src="images/Star.png" alt="Star" class="star-image">
-                <img src="images/Star.png" alt="Star" class="star-image">
-                <img src="images/Star.png" alt="Star" class="star-image">
+                <div class="star-rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1"></label>
+                </div>
             </div>
             <div class="cta-buttons">
-                <a href="#work" class="btn">
+                <a href="services.html" class="btn">
                     View Work
                     <span class="arrow">→</span>
                 </a>
-                <a href="#contact" class="btn">
+                <a href="contact.html" class="btn">
                     Contact Us
                     <span class="arrow">→</span>
                 </a>
@@ -323,7 +390,41 @@
         <img src="images/design-1.png" alt="Design Element" class="design-element design-1">
         <img src="images/design-2.png" alt="Design Element" class="design-element design-2">
     </section>
+
+    <script>
+        // Set active navigation link based on current page
+        function setActiveNav() {
+            const currentPage = window.location.pathname.split('/').pop() || 'homepage.html';
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                if (href === currentPage || (currentPage === '' && href === 'homepage.html')) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Call setActiveNav when page loads
+        window.addEventListener('DOMContentLoaded', setActiveNav);
+
+        // Debug function - check if files exist
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    console.log('Attempting to navigate to:', href);
+                    
+                    // Check if it's the services link
+                    if (href.includes('service')) {
+                        console.log('Services link clicked');
+                        // Let the default behavior happen
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
-<!-- ADD -->
