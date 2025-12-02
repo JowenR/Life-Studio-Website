@@ -297,20 +297,6 @@ a{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Navbar - same as homepage */
 .navbar {
     position: fixed;
     top: 0;
@@ -368,9 +354,9 @@ a{
     width: 100%;
 }
 
-/* Space below header */
+
 body {
-    padding-top: 120px; /* same as homepage spacing */
+    padding-top: 120px; 
 }
 
 
