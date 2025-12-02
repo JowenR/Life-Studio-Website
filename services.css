@@ -155,7 +155,6 @@ p {
     margin-right: 125px;
     margin-left: 125px;
 
-
 }
 
 .bg {
@@ -187,6 +186,15 @@ p {
     margin-left: 10px;
 }
 
+.bgid {
+    position: absolute;
+    width: 347px;
+    height: 387px;
+    border-radius: 30px;
+    background: #E6DEC8;
+    z-index: 0;
+    margin-left: 10px;
+}
 img {
     width: 500px;
     height: auto;
