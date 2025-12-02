@@ -1,0 +1,50 @@
+*{
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+body{
+    padding-top: 100px;
+
+}
+.navbar{
+    background:#FFF; 
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Azeret Mono";
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    z-index: 1000;
+
+}
+
+.logo a{
+    color: #000;
+    font-weight: 300;
+
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    gap: 30px;
+
+}
+
+ul li a{
+    color: #000;
+    font-family: "Azeret Mono", monospace;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+
+}
