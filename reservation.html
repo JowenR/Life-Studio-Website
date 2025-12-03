@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reservations</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+:root{
+  --accent: rgb(103,28,28);
+  --light-bg: #fffbf2;
+  --soft-bg: #F6ECD0;
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+
+body{
+  background:#cfc8c8;
+  font-family:"Montserrat", Arial, sans-serif;
+  display:flex;
+  justify-content:center;
+  padding:30px 10px;
+}
+
+/* MAIN CARD */
+.container{
+  background: linear-gradient(to bottom, var(--light-bg), #F5DFA8);
+  width: 450px;
+  max-width: 95%;
+  padding: 30px;
+  border-radius: 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  color: var(--accent);
+  text-align:center;
+}
+
+.container h1{
+  margin: 0;
+  font-size: 34px;
+  font-weight:900;
+}
+
+.subtitle{
+  font-size:12px;
+  margin-top:6px;
+  color:rgba(0,0,0,0.5);
+}
+
+/* RESERVATION LIST CARD */
+.reservation-card{
+  margin-top:25px;
+  background:#fff;
+  border-radius:16px;
+  padding:20px;
+  text-align:left;
+  box-shadow:0 3px 8px rgba(0,0,0,0.12);
+}
+
+/* EACH ITEM */
+.res-item{
+  background: var(--soft-bg);
+  border: 2px solid var(--accent);
+  padding:14px;
+  border-radius:14px;
+  margin-bottom:14px;
+  box-shadow:0px 3px 6px rgba(0,0,0,0.18);
+}
+
+.res-item:last-child{ margin-bottom:0; }
+
+.res-label{
+  font-size:11px;
+  opacity:0.65;
+}
+
+.res-service{
+  font-size:17px;
+  font-weight:800;
+  margin-top:3px;
+}
+
+.res-date{
+  margin-top:6px;
+  font-size:14px;
+  color:var(--accent);
+}
+
+/* NO DATA */
+.no-reservations{
+  text-align:center;
+  font-size:14px;
+  padding-top:30px;
+  opacity:0.7;
+}
+
+/* CLEAR ALL BTN */
+.clear-btn{
+  margin-top:16px;
+  width:100%;
+  background:#f6e2b6;
+  border:2px solid var(--accent);
+  padding:12px;
+  font-weight:800;
+  border-radius:50px;
+  cursor:pointer;
+}
+.clear-btn:hover{
+  transform:scale(1.03);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  
+  <h1>RESERVATIONS</h1>
+  <p class="subtitle">YOUR SAVED BOOKINGS</p>
+
+  <div class="reservation-card">
+      <div id="reservationList"></div>
+  </div>
+
+  <button class="clear-btn" onclick="clearReservations()">Clear All Reservations</button>
+
+</div>
+
+<script>
+/* LOAD RESERVATIONS FROM LOCAL STORAGE */
+function loadReservations(){
+  let list = document.getElementById("reservationList");
+  let data = JSON.parse(localStorage.getItem("reservations")) || [];
+
+  if(data.length === 0){
+    list.innerHTML = `<p class="no-reservations">No reservations yet.</p>`;
+    return;
+  }
+
+  list.innerHTML = "";
+
+  data.forEach((item, index) => {
+    let div = document.createElement("div");
+    div.className = "res-item";
+
+    div.innerHTML = `
+      <p class="res-label">SERVICE</p>
+      <p class="res-service">${item.service}</p>
+
+      <p class="res-label" style="margin-top:10px;">DATE RESERVED</p>
+      <p class="res-date">${item.date}</p>
+    `;
+
+    list.appendChild(div);
+  });
+}
+
+/* CLEAR ALL */
+function clearReservations(){
+  if(confirm("Clear all reservations?")){
+    localStorage.removeItem("reservations");
+    loadReservations();
+  }
+}
+
+loadReservations();
+localStorage.setItem("reservations", JSON.stringify(reservationsArray));
+
+</script>
+
+</body>
+</html>
