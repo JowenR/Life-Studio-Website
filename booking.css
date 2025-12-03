@@ -1,0 +1,108 @@
+.container1 {
+    width: 400px;
+    margin: 0;
+    padding: 10px;
+    height: 550px;
+    background: linear-gradient(to bottom, #fffbf2, #F5DFA8);
+    color: rgb(103, 28, 28);
+    border-radius: 20px;
+    font-family: Arial;
+}
+
+.title {
+    font-size: 250%;
+    text-align: left;
+    padding-left: 35px;
+}
+
+.subtitle {
+    text-align: left;
+    padding-left: 35px;
+}
+
+.container2 {
+    width: 300px;
+    margin: 10px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 20px;
+    margin-top: 40px;
+    font-family: Arial, sans-serif;
+}
+
+.services-title {
+    font-size: 100%;
+}
+
+.services-sub {
+    font-size: 75%;
+}
+
+.select-services {
+    width: 300px;
+    height: 30px;
+    padding: 5px;
+}
+
+.container3 {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 20px; 
+    background: #F6ECD0;
+    color: rgb(103, 28, 28);
+    border-radius: 20px;
+    font-family: Arial;
+    box-sizing: border-box; 
+}
+
+.date-title,
+.date-label {
+    display: block;
+    text-align: left;
+    margin-left: 0; 
+}
+
+.date-title {
+    font-size: 75%;
+    margin-bottom: 5px;
+}
+
+.date-label {
+    font-size: 125%;
+    margin-bottom: 10px;
+}
+
+.date-input {
+    width: 100%; 
+    height: 30px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgb(103, 28, 28);
+    color: rgb(103, 28, 28);
+}
+
+.ok-btn,
+.cancel-btn {
+    font-size: 75%;
+    background: none;
+    border: none;
+    color: rgb(103, 28, 28);
+    cursor: pointer;
+    float: right;
+    margin-right: 17px;
+}
+
+.cancel-btn {
+    margin-right: 0;
+}
+
+.submit-btn {
+    font-size: 100%;
+    background-color: #F5DFA8;
+    border-radius: 50px;
+    padding: 10px;
+    width: 150px;
+    font-weight: bold;
+    cursor: pointer;
+}
