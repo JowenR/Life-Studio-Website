@@ -9,8 +9,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Azeret+Mono' rel='stylesheet'>
-    
-
+	
+	<!-- Added: modal styles -->
+	<style>
+		/* Booking modal styles */
+		#booking-modal.hidden{display:none;}
+		#booking-modal{
+			position:fixed;
+			inset:0;
+			display:flex;
+			align-items:center;
+			justify-content:center;
+			z-index:1000;
+		}
+		#booking-modal .modal-backdrop{
+			position:absolute;
+			inset:0;
+			background:rgba(0,0,0,0.6);
+		}
+		#booking-modal .modal-panel{
+			position:relative;
+			background:#fff;
+			width:92%;
+			max-width:900px;
+			max-height:90%;
+			border-radius:8px;
+			overflow:hidden;
+			box-shadow:0 10px 30px rgba(0,0,0,0.3);
+			z-index:1;
+		}
+		#booking-modal .modal-close{
+			position:absolute;
+			top:8px;
+			right:8px;
+			background:transparent;
+			border:none;
+			font-size:28px;
+			line-height:1;
+			cursor:pointer;
+			z-index:2;
+		}
+		#booking-modal iframe{
+			width:100%;
+			height:80vh;
+			border:0;
+			display:block;
+		}
+		@media(min-width:768px){ #booking-modal iframe{ height:75vh; } }
+	</style>
 </head>
 
 <body>
@@ -161,5 +207,60 @@
         </div>
 
     </div>
+
+	<!-- Added: modal HTML (insert near end of body, before </body>) -->
+	<div id="booking-modal" class="hidden" aria-hidden="true">
+		<div class="modal-backdrop"></div>
+		<div class="modal-panel" role="dialog" aria-modal="true" aria-label="Booking">
+			<button class="modal-close" aria-label="Close booking panel">&times;</button>
+			<iframe id="booking-iframe" src="" title="Booking"></iframe>
+		</div>
+	</div>
+
+	<!-- Added: script to open Booking.html in modal and close on outside click / Escape -->
+	<script>
+		document.addEventListener('DOMContentLoaded', function(){
+			const modal = document.getElementById('booking-modal');
+			const iframe = document.getElementById('booking-iframe');
+			const closeBtn = modal.querySelector('.modal-close');
+
+			function openModal(url){
+				iframe.src = url;
+				modal.classList.remove('hidden');
+				modal.setAttribute('aria-hidden','false');
+				document.body.style.overflow = 'hidden';
+			}
+			function closeModal(){
+				modal.classList.add('hidden');
+				modal.setAttribute('aria-hidden','true');
+				iframe.src = '';
+				document.body.style.overflow = '';
+			}
+
+			// Intercept clicks on links that point to Booking.html (keeps href for fallback)
+			document.addEventListener('click', function(e){
+				const a = e.target.closest('a[href]');
+				if(!a) return;
+				const href = a.getAttribute('href');
+				if(!href) return;
+				// Match Booking.html (relative or plain)
+				if(href.replace(/^\.\//,'') === 'Booking.html' || href.endsWith('/Booking.html') || href.endsWith('Booking.html')){
+					e.preventDefault();
+					openModal(href);
+				}
+			});
+
+			// Close when clicking backdrop/outside panel
+			modal.addEventListener('click', function(e){
+				if(e.target.classList.contains('modal-backdrop') || e.target === modal) closeModal();
+			});
+			closeBtn.addEventListener('click', closeModal);
+
+			// Close on Escape
+			document.addEventListener('keydown', function(e){
+				if(e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+			});
+		});
+	</script>
 </body>
 </html>
