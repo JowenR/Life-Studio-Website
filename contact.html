@@ -7,7 +7,78 @@
     <link rel="stylesheet" href="contact.css">
 
 </head>
+<style>
+            header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo img {
+            height: 75px;
+            width: auto;
+            max-width: 250px;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 50px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a:hover {
+            color: #8B0000;
+        }
+
+        nav a.active {
+            color: #8B0000;
+            font-weight: 600;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #8B0000;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+</style>
 <body>
     <header>
     <nav class="navbar">
@@ -32,17 +103,17 @@
                 <h1 style="color: black;">CONTACT US</h1>
             </div>
             <div class="icons">
-                <img src="facebook.png" alt="Facebook">
+                <img src="images/contact pictures/facebook.png" alt="Facebook">
                 <a class="info-btn" href="#">LifeStudio Lucena</a>
             </div>
 
             <div class="icons">
-                <img src="phonecall.png" alt="Phone Number">
+                <img src="images/contact pictures/" alt="Phone Number">
                 <div class="info-btn">710-8871</div>
             </div>
 
             <div class="icons">
-                <img src="location.png" alt="Location">
+                <img src="images/contact pictures/location.png" alt="Location">
                 <div class="info-btn">
                     39 Enriquez St., Brgy. 2,<br>Lucena City, 4301
                 </div>
@@ -53,7 +124,7 @@
         <!-- RIGHT SIDE FORM -->
         <div class="right-info">
             <div class="big-circle">
-                <img src="LS Logo.png" alt="LifeStudio Logo">
+                <img src="images/contact pictures/lifestudio-logo.png" alt="LifeStudio Logo">
             </div>
 
             <form class="contact-form">
