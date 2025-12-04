@@ -1,3 +1,53 @@
+*{
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+
+}
+
+body{
+    padding-top: 100px;
+
+}
+.navbar{
+    background:#FFF; 
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Azeret Mono";
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    z-index: 1000;
+
+}
+
+.logo a{
+    color: #000;
+    font-weight: 300;
+
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    gap: 30px;
+
+}
+
+ul li a{
+    color: #000;
+    font-family: "Azeret Mono", monospace;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+
+}
 * {
     margin: 0;
     padding: 0;
@@ -45,7 +95,7 @@ nav a {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh;   /* ensures full screen height */
+    min-height: 100vh;   
     padding: 60px 0;
     position: relative;
     overflow: hidden;
@@ -56,7 +106,7 @@ nav a {
     align-items: left;
     width: 80%;
     margin: auto;
-    min-height: 70vh;   /* Ensures section grows with content */
+    min-height: 70vh;   
     position: relative;
     z-index: 2;
 }
@@ -110,7 +160,7 @@ nav a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;  /* centers vertically */
+    justify-content: center; 
     gap: 20px;
 
 }
@@ -124,7 +174,7 @@ nav a {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
-    background-color: white; /* optional */
+    background-color: white; 
 }
 
 .big-circle img {
@@ -171,27 +221,5 @@ nav a {
 
 body{
     padding-top: 100px;
-
-}
-.nav-container{
-    background:#FFF; 
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-    padding: 15px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: "Azeret Mono";
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    box-sizing: border-box;
-    z-index: 1000;
-
-}
-
-.logo a{
-    color: #000;
-    font-weight: 300;
 
 }
