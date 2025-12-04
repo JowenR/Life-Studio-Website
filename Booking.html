@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Booking Page - Aligned</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+:root{
+  --card-width:420px;
+  --accent: rgb(103,28,28);
+  --soft-bg:#F6ECD0;
+}
+
+/* GLOBAL */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#cfc8c8;
+  font-family:"Montserrat", Arial, sans-serif;
+}
+
+/* OUTER CARD (centered content layout) */
+.container1{
+  width:var(--card-width);
+  max-width:94%;
+  padding:30px 26px;
+  border-radius:22px;
+  background: linear-gradient(to bottom,#fffbf2,#F5DFA8);
+  color:var(--accent);
+  box-shadow:0 6px 18px rgba(0,0,0,0.18);
+  text-align:center;
+}
+
+/* heading */
+.container1 h1{margin:0;font-size:34px;font-weight:900}
+.subtitle{margin:6px 0 14px;font-size:12px;color:rgba(16,16,16,0.45)}
+
+/* WHITE CARD */
+.container2{
+  background:#fff;
+  border-radius:14px;
+  padding:22px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.08);
+  text-align:left;
+}
+
+/* Titles */
+.section-title{
+  font-weight:700;
+  font-size:15px;
+  margin:0 0 3px 0;
+  padding-left:4px;
+}
+.section-sub{
+  margin:0 0 12px 0;
+  font-size:11px;
+  color:#6e6e6e;
+  padding-left:4px;
+}
+
+/* HAMBURGER BOX */
+.hamburger-box{
+  width:100%;
+  background:var(--soft-bg);
+  border-radius:10px;
+  padding:12px;
+  border:1.5px solid var(--accent);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  margin-bottom:12px;
+  position:relative;
+}
+.hamburger-icon{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.hamburger-icon div{
+  width:32px;
+  height:4px;
+  background:var(--accent);
+  border-radius:2px;
+}
+.selected-service{
+  display:none;
+  font-weight:700;
+  color:var(--accent);
+}
+
+/* SERVICES POPUP */
+.services-popup{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.services-box{
+  background: #f6ecd0;
+  border: 5px solid #5a3630;
+  padding: 22px;
+  width: 240px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: popIn 0.22s ease-out;
+}
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.service-option{
+  width: 100%;
+  background: #ffffff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #5a3630;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+.service-option:active{ transform: scale(0.96); }
+.services-close-wrap{
+  display:flex;
+  justify-content:center;
+  margin-top: 5px;
+}
+.services-close{
+  background: none;
+  border: none;
+  color: #5a3630;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* DATE SECTION */
+.container3{
+  background:var(--soft-bg);
+  border-radius:12px;
+  padding:16px;
+  margin-top:18px;
+}
+.container3 .label-row{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding-left:4px;
+}
+.container3 .small{font-size:11px;margin:0}
+.container3 label{margin:3px 0 0;font-weight:600}
+
+/* DATE DISPLAY BUTTON — FIXED ALIGNMENT */
+.date-display{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 12px;
+  margin-top:10px;
+  border-radius:8px;
+  background:#fff;
+  border:2px solid rgba(103,28,28,0.7);
+  cursor:pointer;
+  font-size:14px;
+  color:var(--accent);
+}
+.date-icon{
+  width:28px;
+  height:28px;
+  flex:0 0 28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.date-text{
+  flex:1;
+  text-align:left;
+}
+
+/* Submit */
+.submit-wrap{
+  display:flex;
+  justify-content:center;
+  margin-top:18px;
+}
+.submit-btn{
+  width:70%;
+  max-width:260px;
+  padding:12px 18px;
+  border-radius:50px;
+  background:#f6e2b6;
+  border:2px solid var(--accent);
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* CALENDAR POPUP */
+.calendar-popup{
+  position:fixed;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:320px;
+  background:linear-gradient(to bottom,#fffbf2,#e6d4a6);
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 8px 26px rgba(0,0,0,0.25);
+  display:none;
+  z-index:999;
+}
+.calendar-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:700;
+  color:var(--accent);
+  margin-bottom:10px;
+}
+.arrow{
+  cursor:pointer;
+  font-size:20px;
+  padding:6px;
+}
+.calendar-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
+  text-align:center;
+}
+.calendar-grid div{
+  padding:8px 0;
+  border-radius:50%;
+}
+.calendar-day{cursor:pointer}
+.calendar-day:hover{background:rgba(103,28,28,0.12)}
+.selected-date{
+  background:var(--accent);
+  color:#fff;
+}
+
+/* actions */
+.calendar-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:18px;
+  margin-top:12px;
+}
+.calendar-actions button{
+  background:none;
+  border:none;
+  color:var(--accent);
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* responsive */
+@media (max-width:460px){
+  :root{--card-width:360px}
+  .submit-btn{width:90%}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container1">
+  <h1>BOOKINGS</h1>
+  <p class="subtitle">PLEASE FILL IN DETAILS</p>
+
+  <div class="container2">
+
+    <p class="section-title">SERVICES</p>
+    <p class="section-sub">CLICK ICON TO SELECT SERVICE</p>
+
+    <div class="hamburger-box" onclick="openServicesPopup()">
+      <div class="hamburger-icon" id="hamburgerIcon">
+        <div></div><div></div><div></div>
+      </div>
+      <div class="selected-service" id="selectedService"></div>
+    </div>
+
+    <!-- SERVICES POPUP -->
+    <div class="services-popup" id="servicesPopup">
+      <div class="services-box">
+        <button class="service-option" onclick="chooseService('WEDDING')">WEDDING</button>
+        <button class="service-option" onclick="chooseService('DEBUT')">DEBUT</button>
+        <button class="service-option" onclick="chooseService('GRADUATION')">GRADUATION</button>
+        <button class="service-option" onclick="chooseService('SCHOOL EVENTS')">SCHOOL EVENTS</button>
+        <button class="service-option" onclick="chooseService('ORDINATION')">ORDINATION</button>
+        <button class="service-option" onclick="chooseService('SCHOOL ID')">SCHOOL ID</button>
+        <button class="service-option" onclick="chooseService('ID MATERIALS')">ID MATERIALS</button>
+
+        <div class="services-close-wrap">
+          <button class="services-close" onclick="closeServicesPopup()">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DATE SECTION -->
+    <div class="container3">
+      <div class="label-row">
+        <p class="small">Select date</p>
+        <label>Enter date</label>
+      </div>
+
+      <div class="date-display" id="selectedDateText" onclick="openCalendar()">
+        <div class="date-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="5" width="18" height="16" rx="2" stroke="rgb(103,28,28)" stroke-width="1.5"></rect>
+            <path d="M16 3v4M8 3v4" stroke="rgb(103,28,28)" stroke-width="1.5" stroke-linecap="round"></path>
+            <path d="M7 11h5M7 15h5" stroke="rgb(103,28,28)" stroke-width="1.25" stroke-linecap="round"></path>
+          </svg>
+        </div>
+        <div class="date-text" id="dateTextInner">Select a date...</div>
+      </div>
+    </div>
+
+    <div class="submit-wrap">
+      <button class="submit-btn">Submit</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Calendar Popup -->
+<div class="calendar-popup" id="calendarPopup">
+  <div class="calendar-header">
+    <span class="arrow" onclick="prevMonth()">&lt;</span>
+    <div id="calendarMonth">Month Year</div>
+    <span class="arrow" onclick="nextMonth()">&gt;</span>
+  </div>
+
+  <div class="calendar-grid" id="calendarGrid"></div>
+
+  <div class="calendar-actions">
+    <button onclick="closeCalendar()">Cancel</button>
+    <button onclick="applyDate()">OK</button>
+  </div>
+</div>
+
+<script>
+/* -------------------- SERVICES -------------------- */
+function openServicesPopup(){
+  document.getElementById("servicesPopup").style.display = "flex";
+}
+function closeServicesPopup(){
+  document.getElementById("servicesPopup").style.display = "none";
+}
+function chooseService(serviceName){
+  document.getElementById("selectedService").textContent = serviceName;
+  document.getElementById("selectedService").style.display = "block";
+  document.getElementById("hamburgerIcon").style.display = "none";
+  closeServicesPopup();
+}
+
+/* -------------------- CALENDAR -------------------- */
+let currentDate = new Date();
+let selectedDate = null;
+
+function openCalendar(){
+  document.getElementById('calendarPopup').style.display='block';
+  generateCalendar();
+}
+function closeCalendar(){
+  document.getElementById('calendarPopup').style.display='none';
+}
+function applyDate(){
+  if(selectedDate){
+    const formatted = selectedDate.toLocaleDateString(undefined, {
+      weekday:'short', year:'numeric', month:'short', day:'numeric'
+    });
+    document.getElementById('dateTextInner').textContent = formatted;
+  }
+  closeCalendar();
+}
+
+/* Generate calendar */
+function generateCalendar(){
+  const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  document.getElementById('calendarMonth').textContent =
+    monthNames[currentDate.getMonth()] + " " + currentDate.getFullYear();
+
+  const grid = document.getElementById('calendarGrid');
+  grid.innerHTML = '';
+
+  const days = ['S','M','T','W','T','F','S'];
+  days.forEach(d => grid.innerHTML += `<div style="font-weight:700">${d}</div>`);
+
+  const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
+  const numDays = new Date(currentDate.getFullYear(), currentDate.getMonth()+1, 0).getDate();
+
+  for(let i=0;i<firstDay;i++) grid.innerHTML += `<div></div>`;
+
+  for(let d=1; d<=numDays; d++){
+    let isSelected =
+      selectedDate &&
+      selectedDate.getDate()===d &&
+      selectedDate.getMonth()===currentDate.getMonth() &&
+      selectedDate.getFullYear()===currentDate.getFullYear();
+
+    grid.innerHTML += `<div class="calendar-day ${isSelected?'selected-date':''}" onclick="pickDate(${d})">${d}</div>`;
+  }
+}
+function pickDate(day){
+  selectedDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+  generateCalendar();
+}
+function prevMonth(){ currentDate.setMonth(currentDate.getMonth()-1); generateCalendar(); }
+function nextMonth(){ currentDate.setMonth(currentDate.getMonth()+1); generateCalendar(); }
+
+/* Close popup if clicking outside */
+document.addEventListener('click', function(e){
+  const popup = document.getElementById('calendarPopup');
+  const trigger = document.getElementById('selectedDateText');
+  if(popup.style.display==='block' && !popup.contains(e.target) && !trigger.contains(e.target)){
+    closeCalendar();
+  }
+});
+document.querySelector(".submit-btn").addEventListener("click", function(){
+    
+    let service = document.getElementById("selectedService").textContent;
+    let date = document.getElementById("dateTextInner").textContent;
+
+    if(service === "" || date === "Select a date..."){
+        alert("Please complete all fields.");
+        return;
+    }
+
+    let reservations = JSON.parse(localStorage.getItem("reservations")) || [];
+
+    reservations.push({
+        service: service,
+        date: date
+    });
+
+    localStorage.setItem("reservations", JSON.stringify(reservations));
+
+    window.location.href = "reservation.html"; // redirect to reservation page
+});
+
+localStorage.setItem("reservations", JSON.stringify(reservationsArray));
+
+</script>
+
+</body>
+</html>
