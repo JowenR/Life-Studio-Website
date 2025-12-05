@@ -1,49 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Page - LifeStudio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contacts</title>
     <link rel="stylesheet" href="contact.css">
+
 </head>
+<style>
 
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 15px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo img {
+    height: 75px;
+    object-fit: contain;
+}
+
+/* BACKGROUND */
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    background-image: url(images/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.3s;
+    padding-bottom: 5px;
+}
+
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo img {
+            height: 75px;
+            width: auto;
+            max-width: 250px;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 50px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a:hover {
+            color: #8B0000;
+        }
+
+        nav a.active {
+            color: #8B0000;
+            font-weight: 600;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #8B0000;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+.contact-section {
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.contact-wrapper {
+    display: flex;
+    width: 80%;
+    background: rgba(255,255,255,0.6);
+    padding: 40px;
+    border-radius: 12px;
+    backdrop-filter: blur(3px);
+}
+
+/* LEFT SIDE */
+.left-info {
+    width: 50%;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.icons img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    background: transparent !important;
+}
+
+/* RIGHT SIDE */
+.right-info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.big-circle img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* FORM STYLING */
+.contact-form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+    font-size: 16px;
+    resize: none;
+}
+
+.contact-form button {
+    padding: 12px;
+    background: #8B0000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background: #a30000;
+}
+
+</style>
 <body>
-
-<header>
-    <div class="nav-container">
+    <header>
+    <nav class="navbar">
         <div class="logo">
-            <img src="lifestudio-logo.png" alt="LifeStudio Logo">
-        </div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-        </nav>
-    </div>
-</header>
+            <a href="contact.html"><img src="LS Logo.png" width="330" height="120" alt="LS Logo"></a></div>
 
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="about_page.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    </header>
 <section class="contact-section">
-
-    <h1>CONTACT US</h1>
-
+    
     <div class="contact-wrapper">
 
-        <!-- Left Info Column -->
+        <!-- LEFT SIDE CONTACT INFO -->
         <div class="left-info">
-
             <div class="icons">
-                <img src="facebook.png" alt="Facebook">
+                <h1 style="color: black;">CONTACT US</h1>
+            </div>
+            <div class="icons">
+                <img src="images/contact pictures/facebook.png" alt="Facebook">
                 <a class="info-btn" href="#">LifeStudio Lucena</a>
             </div>
 
             <div class="icons">
-                <img src="phonecall.png" alt="Phone Number">
+                <img src="images/contact pictures/phonecall.png" alt="Phone Number">
                 <div class="info-btn">710-8871</div>
             </div>
 
             <div class="icons">
-                <img src="location.png" alt="Location">
+                <img src="images/contact pictures/location.png" alt="Location">
                 <div class="info-btn">
                     39 Enriquez St., Brgy. 2,<br>Lucena City, 4301
                 </div>
@@ -51,10 +260,10 @@
 
         </div>
 
-        <!-- Right Form Column -->
+        <!-- RIGHT SIDE FORM -->
         <div class="right-info">
             <div class="big-circle">
-                <img src="lifestudio-logo.png" alt="LifeStudio Logo">
+                <img src="images/contact pictures/lifestudio-logo.png" alt="LifeStudio Logo">
             </div>
 
             <form class="contact-form">
@@ -67,6 +276,6 @@
     </div>
 
 </section>
-
 </body>
 </html>
+

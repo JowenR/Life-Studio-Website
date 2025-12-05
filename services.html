@@ -9,11 +9,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Azeret+Mono' rel='stylesheet'>
-    
-
+	
+	<!-- Added: modal styles -->
+	<style>
+		/* Booking modal styles */
+		#booking-modal.hidden{display:none;}
+		#booking-modal{
+			position:fixed;
+			inset:0;
+			display:flex;
+			align-items:center;
+			justify-content:center;
+			z-index:1000;
+		}
+		#booking-modal .modal-backdrop{
+			position:absolute;
+			inset:0;
+			background:transparent;
+		}
+		#booking-modal .modal-panel{
+			position:relative;
+			background:transparent;
+			width:92%;
+			max-width:500px;
+			max-height:90%;
+			border-radius:8px;
+			overflow:hidden;
+			z-index:1;
+		}
+		#booking-modal .modal-close{
+			position:absolute;
+			top:8px;
+			right:8px;
+			background:transparent;
+			border:none;
+			font-size:28px;
+			line-height:1;
+			cursor:pointer;
+			z-index:2;
+		}
+		#booking-modal iframe{
+			width:100%;
+			height:80vh;
+			border:0;
+			display:block;
+		}
+		@media(min-width:768px){ #booking-modal iframe{ height:75vh; } }
+	</style>
 </head>
 
 <body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#"><img src="LS Logo.png" width="330" height="120" alt="LS Logo"></a></div>
+
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="about_page.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
     <h2>Services We Offer</h2>
 
     <div class="wedding">
@@ -27,8 +84,8 @@
                 Capture the beauty, joy, and romance of <br>your special day with timeless wedding <br>photos. From intimate moments to <br>grand celebrations, we preserve every <br>detail of your love story.
             </p>
             <div class="Button">
-                <h4 class="btn">Samples ↗</h4>
-                <h4 class="btn">Book Now</h4>
+                <a href="Weddings.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+                <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
             </div>
         </div>
     </div>
@@ -46,8 +103,8 @@
                 Celebrate your milestone 18th birthday <br>with stunning photos that showcase <br>your elegance and personality. We <br>capture every highlight of your special<br>night—from the grand entrance to the<br>memorable traditions.
             </p>
             <div class="Button">
-                <h4 class="btn">Samples ↗</h4>
-                <h4 class="btn">Book Now</h4>
+                <a href="Debut.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+                <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
             </div>
         </div>
     </div>
@@ -66,8 +123,8 @@
                 Celebrate your achievement with <br>timeless portraits that highlight your <br>success and personality. We'll capture <br>the pride, joy, and unforgettable <br>moments of your special day.
             </p>
             <div class="Button">
-                <h4 class="btn">Samples ↗</h4>
-                <h4 class="btn">Book Now</h4>
+                <a href="graduation.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+                <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
             </div>
         </div>
     </div>
@@ -85,8 +142,8 @@
                 From moving-up events to recognition<br>days, we capture every proud moment<br>on stage and off. Relive the excitement,<br>joy, and memories of your school<br>milestones through vibrant, lasting<br>photos.
             </p>
             <div class="Button">
-                <h4 class="btn">Samples ↗</h4>
-                <h4 class="btn">Book Now</h4>
+                <a href="School Ceremonies.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+                <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
             </div>
         </div>
     </div>
@@ -104,8 +161,8 @@
                 Honor this sacred milestone with <br>reverent and meaningful photos that <br>reflect the beauty of your calling. <br>We capture the solemnity, joy, and <br>spiritual significance of your <br>ordination day.
             </p>
             <div class="Button">
-                <h4 class="btn">Samples ↗</h4>
-                <h4 class="btn">Book Now</h4>
+                <a href="Ordination.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+                <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
             </div>
         </div>
     </div>
@@ -123,8 +180,8 @@
                 Professional, clear, and polished ID<br>photos designed to meet school<br>requirements. We ensure every shot is<br>neat, presentable, and ready for official<br>use.
             </p>
             <div class="Button">
-                <h4 class="btn">Samples ↗</h4>
-                <h4 class="btn">Book Now</h4>
+                <a href="SchoolID.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+                <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
             </div>
         </div>
     </div>
@@ -144,10 +201,62 @@
             We provide high-quality ID accessories<br> such as lanyards, holders, and cases to<br> keep your IDs secure and professional.<br> Durable and stylish options are available<br> to suit every school or organization’s<br> needs.
         </p>
         <div class="Button">
-            <h4 class="btn">Samples ↗</h4>
-            <h4 class="btn">Book Now</h4>
+            <a href="ID Materials.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+            <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
         </div>
 
     </div>
+
+	<!-- Added: modal HTML (insert near end of body, before </body>) -->
+	<div id="booking-modal" class="hidden" aria-hidden="true">
+		<div class="modal-backdrop"></div>
+		<div class="modal-panel" role="dialog" aria-modal="true" aria-label="Booking">
+			<iframe id="booking-iframe" src="" title="Booking"></iframe>
+		</div>
+	</div>
+
+	<!-- Added: script to open Booking.html in modal and close on outside click / Escape -->
+	<script>
+		document.addEventListener('DOMContentLoaded', function(){
+			const modal = document.getElementById('booking-modal');
+			const iframe = document.getElementById('booking-iframe');
+
+			function openModal(url){
+				iframe.src = url;
+				modal.classList.remove('hidden');
+				modal.setAttribute('aria-hidden','false');
+				document.body.style.overflow = 'hidden';
+			}
+			function closeModal(){
+				modal.classList.add('hidden');
+				modal.setAttribute('aria-hidden','true');
+				iframe.src = '';
+				document.body.style.overflow = '';
+			}
+
+			// Intercept clicks on links that point to Booking.html (keeps href for fallback)
+			document.addEventListener('click', function(e){
+				const a = e.target.closest('a[href]');
+				if(!a) return;
+				const href = a.getAttribute('href');
+				if(!href) return;
+				// Match Booking.html (relative or plain)
+				if(href.replace(/^\.\//,'') === 'Booking.html' || href.endsWith('/Booking.html') || href.endsWith('Booking.html')){
+					e.preventDefault();
+					openModal(href);
+				}
+			});
+
+			// Close when clicking backdrop/outside panel
+			modal.addEventListener('click', function(e){
+				if(e.target.classList.contains('modal-backdrop') || e.target === modal) closeModal();
+			});
+
+			// Close on Escape
+			document.addEventListener('keydown', function(e){
+				if(e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+			});
+		});
+	</script>
 </body>
 </html>

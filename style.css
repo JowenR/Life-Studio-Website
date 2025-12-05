@@ -1,16 +1,21 @@
+
+        
         .logo{
-            float: left;
-            height: 100px;
-            width: 500px;
-            object-fit: cover;
-            position: relative;
-            bottom: 15px;
-            object-fit: cover
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 75px;
+            width: auto;
+            max-width: 250px;
+            object-fit: contain;
+        }
             
 
         
             
-        }
+        
         h1 {
             text-align: center;
             color: #573737;
@@ -20,9 +25,14 @@
             font-family: "Montserrat";
         }
         body{
-            padding-left: 20px;
-            padding-left: 20px;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            background-image: url(images/background.png);
+            object-fit: cover;
+            
         }
+
+        
         nav ul {
             display: flex;
             list-style: none;
@@ -36,16 +46,13 @@
             font-weight: 500;
             transition: color 0.3s;
             font-family: 'Montserrat', sans-serif;
-            float: right;
+            
         }
 
         nav a:hover {
             color: #8B0000;
         }
         
-        nav li{
-            float: ;
-        }
 
         header{
             position: fixed;
@@ -59,16 +66,12 @@
             align-items: center;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            object-fit: cover;
+            
             
             
             
         }
 
-        body{
-            background-image: url(image/background.png);
-            object-fit: cover;
-        }
         
         
         .img1{
@@ -110,5 +113,14 @@
             left: 1015px;
             bottom: 480px;
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            transition: 0.3s ease;
 
+        }
+
+        button:hover {
+        background-color: #e3d4b3;
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+        cursor: pointer;
+        transition: 0.3s ease;
         }
