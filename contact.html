@@ -5,55 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Contacts</title>
     <link rel="stylesheet" href="contact.css">
-
-</head>
-<style>
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: white;
-    padding: 15px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.logo img {
-    height: 75px;
-    object-fit: contain;
-}
-
-/* BACKGROUND */
-body {
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-    background-image: url(images/background.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 50px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-    font-weight: 500;
-    transition: 0.3s;
-    padding-bottom: 5px;
-}
-
-   * {
+    <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -61,10 +14,13 @@ nav a {
 
         body {
             font-family: 'Montserrat', sans-serif;
-            
+            overflow-x: hidden;
+            background-image: url(images/background.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
-        /* Header Styles */
         header {
             position: fixed;
             top: 0;
@@ -75,7 +31,7 @@ nav a {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
+            z-index: 2000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
@@ -135,105 +91,207 @@ nav a {
         nav a.active::after {
             width: 100%;
         }
-.contact-section {
-    margin-top: 150px;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-}
 
-.contact-wrapper {
-    display: flex;
-    width: 80%;
-    background: rgba(255,255,255,0.6);
-    padding: 40px;
-    border-radius: 12px;
-    backdrop-filter: blur(3px);
-}
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 2500;
+        }
 
-/* LEFT SIDE */
-.left-info {
-    width: 50%;
-}
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #333;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
 
-.icons {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 15px 0;
-}
+        /* Slide-in Mobile Menu */
+        nav.mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            padding-top: 120px;
+            box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.4s ease;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+        }
 
-.icons img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    background: transparent !important;
-}
+        nav.mobile-nav.show {
+            right: 0;
+        }
 
-/* RIGHT SIDE */
-.right-info {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        nav.mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            padding-left: 40px;
+        }
 
-.big-circle img {
-    width: 200px;
-    height: auto;
-    margin-bottom: 20px;
-}
+        nav.mobile-nav a {
+            font-size: 22px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
-/* FORM STYLING */
-.contact-form {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+        /* Contact Section */
+        .contact-section {
+            margin-top: 150px;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
 
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #aaa;
-    font-size: 16px;
-    resize: none;
-}
+        .contact-wrapper {
+            display: flex;
+            width: 80%;
+            background: rgba(255,255,255,0.6);
+            padding: 40px;
+            border-radius: 12px;
+            backdrop-filter: blur(3px);
+            flex-wrap: wrap;
+        }
 
-.contact-form button {
-    padding: 12px;
-    background: #8B0000;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 17px;
-    cursor: pointer;
-    transition: 0.3s;
-}
+        .left-info, .right-info {
+            width: 50%;
+        }
 
-.contact-form button:hover {
-    background: #a30000;
-}
+        .icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
 
-</style>
+        .icons img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            background: transparent !important;
+        }
+
+        .right-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .big-circle img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .contact-form {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #aaa;
+            font-size: 16px;
+            resize: none;
+        }
+
+        .contact-form button {
+            padding: 12px;
+            background: #8B0000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: #a30000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            header {
+                padding: 15px 25px;
+            }
+
+            .contact-wrapper {
+                flex-direction: column;
+                width: 95%;
+                padding: 20px;
+            }
+
+            .left-info, .right-info {
+                width: 100%;
+            }
+
+            .contact-form {
+                width: 100%;
+            }
+
+            .big-circle img {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
 <body>
-    <header>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="contact.html"><img src="LS Logo.png" width="330" height="120" alt="LS Logo"></a></div>
 
+<header>
+    <div class="logo">
+        <a href="contact.html"><img src="LS Logo.png" width="330" height="120" alt="LS Logo"></a>
+    </div>
+
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about_page.html">About</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
     </nav>
-    </header>
+
+    <!-- Mobile Slide-in Menu -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about_page.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
 <section class="contact-section">
-    
     <div class="contact-wrapper">
 
         <!-- LEFT SIDE CONTACT INFO -->
@@ -257,7 +315,6 @@ nav a {
                     39 Enriquez St., Brgy. 2,<br>Lucena City, 4301
                 </div>
             </div>
-
         </div>
 
         <!-- RIGHT SIDE FORM -->
@@ -272,10 +329,18 @@ nav a {
                 <button type="submit">Submit</button>
             </form>
         </div>
-
     </div>
-
 </section>
+
+<script>
+    // Hamburger slide-in menu
+    const hamburger = document.getElementById("hamburger");
+    const mobileNav = document.getElementById("mobileNav");
+
+    hamburger.addEventListener("click", () => {
+        mobileNav.classList.toggle("show");
+    });
+</script>
+
 </body>
 </html>
-

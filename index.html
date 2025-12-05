@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life Studio - Solutions Multimedias</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -248,6 +248,7 @@
             right: 15%;
             top: 50%;
             transform: translateY(-50%);
+            z-index: 3; /* in front of design elements */
         }
 
         .camera-image {
@@ -265,6 +266,7 @@
             position: absolute;
             opacity: 0.8;
             animation: floatDesign 10s ease-in-out infinite;
+            z-index: 1; /* behind camera */
         }
 
         .design-1 {
@@ -333,7 +335,6 @@
         </ul>
     </nav>
 
-    <!-- MOBILE SLIDE-IN MENU -->
     <nav class="mobile-nav" id="mobileNav">
         <ul>
             <li><a href="index.html" class="nav-link active">Home</a></li>
@@ -369,16 +370,18 @@
         </div>
     </div>
 
+
     <div class="camera-container">
         <img src="images/camera.png" class="camera-image" alt="Vintage Camera">
     </div>
+
 
     <img src="images/design-1.png" class="design-element design-1">
     <img src="images/design-2.png" class="design-element design-2">
 </section>
 
 <script>
-    // Slide-in Mobile Menu
+
     const hamburger = document.getElementById("hamburger");
     const mobileNav = document.getElementById("mobileNav");
 

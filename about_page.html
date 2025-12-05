@@ -78,63 +78,152 @@
         nav a.active::after {
             width: 100%;
         }
-        
 
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1500;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #333;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        /* Slide-in Mobile Menu */
+        nav.mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            padding-top: 120px;
+            box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.4s ease;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav.mobile-nav.show {
+            right: 0;
+        }
+
+        nav.mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            padding-left: 40px;
+        }
+
+        nav.mobile-nav a {
+            font-size: 22px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            header {
+                padding: 15px 25px;
+            }
+
+            main {
+                padding-top: 120px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .img1 img, .img2 img, .img3 img, .img4 img {
+                width: 100%;
+                height: auto;
+            }
+        }
     </style>
 
     <title>About</title>
-    
 </head>
 
-    <body>
-
-    
-    
-
-        <header>
-            <div class="logo">
+<body>
+    <header>
+        <div class="logo">
             <img src="images/LS Logo.png" alt="Life Studio - Solutions Multimedias">
         </div>
+
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about_page.html">About</a></li>
+                <li><a href="about_page.html" class="active">About</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-        
-        </header>
-        
-        
-        
-        <main>
-            <h1>About</h1>
-            <div class="img1">
-                <img  src="images/Life Studio 1.png" width="550" height="250" >
-            </div>
 
-            <div class="img2">
-                <img  src="images/logo_withbg.png" width="550" height="250" >
-            </div>
+        <!-- Mobile Slide-in Menu -->
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about_page.html" class="active">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <div class="img3">
-                <img  src="images/services_picture.png" width="720" height="250" >
-            </div>
+    <main>
+        <h1>About</h1>
+        <div class="img1">
+            <img src="images/Life Studio 1.png" width="550" height="250">
+        </div>
 
-            <div class="img4">
-                <img  src="images/About_picture.png" width="720" height="250" >
-            </div>
+        <div class="img2">
+            <img src="images/logo_withbg.png" width="550" height="250">
+        </div>
 
-            <a href="services.html">
-                <button style="font: Azeret Mono;">See Services</button>
-            </a>
+        <div class="img3">
+            <img src="images/services_picture.png" width="720" height="250">
+        </div>
 
-            
+        <div class="img4">
+            <img src="images/About_picture.png" width="720" height="250">
+        </div>
 
+        <a href="services.html">
+            <button style="font: Azeret Mono;">See Services</button>
+        </a>
+    </main>
 
-        </main>
-   
-    
-    </body>
+    <script>
+        // Hamburger slide-in menu
+        const hamburger = document.getElementById("hamburger");
+        const mobileNav = document.getElementById("mobileNav");
+
+        hamburger.addEventListener("click", () => {
+            mobileNav.classList.toggle("show");
+        });
+    </script>
+</body>
 </html>
