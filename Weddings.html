@@ -1,207 +1,202 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ordination</title>
-
+<title>Wedding</title>
 <style>
-body {
-  background: #F6ECD0;
-  text-align: center;
-}
-
-/* OUR WORKS */
-.subtitle {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: Orelega One;
-  font-size: 40px;
-  font-weight: 600;
-  color: #4A1E1E;
-}
-
-/* BIG CENTER TITLE */
-.title {
-  position: absolute;
-  top: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: Orelega One;
-  font-size: 150px;
-  font-weight: 900;
-  color: #4A1E1E;
-  white-space: nowrap;
-}
-
-/* WEDDINGS CONTAINER */
-.weddings {
-  width: 100%;
-  overflow: hidden;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  margin-top: 300px;
-  background-color: #F6DC9B;
-  height: auto;
-}
-
-.weddings-content {
-  display: flex;
-  animation: scroll 12s linear infinite;
-}
-
-/* STRETCHED IMAGES */
-.weddings-content img {
-  width: 240px;
-  height: 360px;       /* increased height to touch Submit button */
-  object-fit: cover;
-  margin-right: 70px;
-  border-radius: 50px;
-}
-
-/* Scroll animation */
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-25%); }
-}
-
- 
-    /* BOOK NOW BUTTON */
-  .book-btn {
-    display: inline-block;
-    background-color: #F5DFA8;
-    padding: 12px 30px;
-    border-radius: 50px;
+  body {
+    background: #F6ECD0;
+    text-align: center;
+  }
+  /* EXIT BUTTON */
+  .exit-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #F5DFA8;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 40px;
+    font-size: 18px;
     font-weight: bold;
-    font-size: 22px;
     color: #4A1E1E;
-    text-decoration: none;
-    margin-top: 680px;
     cursor: pointer;
-    border: 2px solid #4A1E1E;
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
+    transition: 0.2s;
+    z-index: 1000;
   }
 
-  .book-btn:hover {
-    background-color: #e5cb90;
+  .exit-btn:hover {
+    background: #e9cd8c;
+    transform: scale(1.05);
+  }
+  
+  /* OUR WORKS */
+  .subtitle {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Orelega One;
+    font-size: 70px;
+    font-weight: 600;
+    color: #4A1E1E;
+    z-index: 20;
+    pointer-events: none;
   }
 
+  /* BIG CENTER TITLE */
+  .title {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Orelega One;
+    font-size: 150px;
+    font-weight: 900;
+    color: #4A1E1E;
+    z-index: 30;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .marquee {
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin-top: 300px;
+    background-color: #F6DC9B;
+  }
+
+  .marquee-content {
+    display: flex;
+    animation: scroll 50s linear infinite;
+  }
+
+  .marquee-content img {
+    width: 500px;
+    margin-right: 70px;
+    border-radius: 50px;
+  }
+
+  /* Keyframe for smooth infinite scroll */
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
   /* POPUP OVERLAY */
-  #popup {
-    display: none;
+  .popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.5);
+    display: none;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 2000;
   }
 
   /* POPUP BOX */
-  #popup-box {
-    background: white;
-    width: 50%;
+  .popup-box {
+    background: #fff4dd;
+    width: 80%;
     height: 80%;
     border-radius: 20px;
-    padding: 0;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+    overflow: hidden;
     position: relative;
   }
 
-  /* CLOSE BUTTON */
-  #close-popup {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 35px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-
-  iframe {
+  /* POPUP CONTENT (Booking.html iframe) */
+  .popup-box iframe {
     width: 100%;
     height: 100%;
     border: none;
-    border-radius: 20px;
   }
   
 </style>
 </head>
-
 <body>
+<!-- EXIT BUTTON -->
+<a href="services.html">
+  <button class="exit-btn">← Exit</button>
+</a> 
 
-<h2 class="subtitle">Our Works</h2>
-<h1 class="title">WEDDINGS</h1>
+  <h2 class="subtitle">Our Works</h2>
+  <h1 class="title">Weddings</h1>
 
-<div class="weddings">
-  <div class="weddings-content">
-    <img src="https://tinyurl.com/4mfnc6c7">
-    <img src="https://tinyurl.com/3rhzbayz">
-    <img src="https://tinyurl.com/4c3dsmf6">
-    <img src="https://tinyurl.com/5n8ty2en">
+<div class="marquee">
+  <div class="marquee-content">
+    
+    <img src="Wedding_pics\Wedding(1).png">
+    <img src="Wedding_pics\Wedding(2).png">
+    <img src="Wedding_pics\Wedding(3).png">
+    <img src="Wedding_pics\Wedding(4).png">
+    <img src="Wedding_pics\Wedding(5).png">
+    <img src="Wedding_pics\Wedding(6).png">
 
-    <img src="https://tinyurl.com/4mfnc6c7">
-    <img src="https://tinyurl.com/3rhzbayz">
-    <img src="https://tinyurl.com/4c3dsmf6">
-    <img src="https://tinyurl.com/5n8ty2en">
+    <!-- duplicates para mukhang infinite -->
+    <img src="Wedding_pics\Wedding(1).png">
+    <img src="Wedding_pics\Wedding(2).png">
+    <img src="Wedding_pics\Wedding(3).png">
+    <img src="Wedding_pics\Wedding(4).png">
+    <img src="Wedding_pics\Wedding(5).png">
+    <img src="Wedding_pics\Wedding(6).png">
 
-    <img src="https://tinyurl.com/4mfnc6c7">
-    <img src="https://tinyurl.com/3rhzbayz">
-    <img src="https://tinyurl.com/4c3dsmf6">
-    <img src="https://tinyurl.com/5n8ty2en">
+    <img src="Wedding_pics\Wedding(1).png">
+    <img src="Wedding_pics\Wedding(2).png">
+    <img src="Wedding_pics\Wedding(3).png">
+    <img src="Wedding_pics\Wedding(4).png">
+    <img src="Wedding_pics\Wedding(5).png">
+    <img src="Wedding_pics\Wedding(6).png">
 
-    <img src="https://tinyurl.com/4mfnc6c7">
-    <img src="https://tinyurl.com/3rhzbayz">
-    <img src="https://tinyurl.com/4c3dsmf6">
-    <img src="https://tinyurl.com/5n8ty2en">
+    <img src="Wedding_pics\Wedding(1).png">
+    <img src="Wedding_pics\Wedding(2).png">
+    <img src="Wedding_pics\Wedding(3).png">
+    <img src="Wedding_pics\Wedding(4).png">
+    <img src="Wedding_pics\Wedding(5).png">
+    <img src="Wedding_pics\Wedding(6).png">
 
-    <img src="https://tinyurl.com/4mfnc6c7">
-    <img src="https://tinyurl.com/3rhzbayz">
-    <img src="https://tinyurl.com/4c3dsmf6">
-    <img src="https://tinyurl.com/5n8ty2en">
+    <img src="Wedding_pics\Wedding(1).png">
+    <img src="Wedding_pics\Wedding(2).png">
+    <img src="Wedding_pics\Wedding(3).png">
+    <img src="Wedding_pics\Wedding(4).png">
+    <img src="Wedding_pics\Wedding(5).png">
+    <img src="Wedding_pics\Wedding(6).png">
 
-    <img src="https://tinyurl.com/4mfnc6c7">
-    <img src="https://tinyurl.com/3rhzbayz">
-    <img src="https://tinyurl.com/4c3dsmf6">
-    <img src="https://tinyurl.com/5n8ty2en">
-
-    <img src="https://tinyurl.com/4mfnc6c7">
-    <img src="https://tinyurl.com/3rhzbayz">
-    <img src="https://tinyurl.com/4c3dsmf6">
-    <img src="https://tinyurl.com/5n8ty2en">
-
-    <img src="https://tinyurl.com/4mfnc6c7">
-    <img src="https://tinyurl.com/3rhzbayz">
-    <img src="https://tinyurl.com/4c3dsmf6">
-    <img src="https://tinyurl.com/5n8ty2en">
+    
+    
   </div>
 </div>
 
-<!-- BOOK NOW BUTTON -->
-<a class="book-btn" onclick="openPopup()">Book Now</a>
+<!-- BOOK NOW BUTTON (OPEN POPUP) -->
+<button onclick="openPopup()" 
+  style="font-size:100%; background-color:#F5DFA8; border-radius:50px; padding:10px; width:150px; font-weight:bold; cursor: pointer; margin-top: 700px;">
+  Book Now
+</button>
 
-<!-- POPUP -->
-<div id="popup" onclick="closePopup(event)">
-  <div id="popup-box">
-    <span id="close-popup" onclick="closePopup(event)">×</span>
-    <iframe id="popup-frame" src=""></iframe>
+<!-- POPUP OVERLAY -->
+<div class="popup-overlay" id="popupOverlay" onclick="closePopupOutside(event)">
+  <div class="popup-box" onclick="event.stopPropagation()">
+      <iframe src="Booking.html"></iframe>
   </div>
 </div>
 
 <script>
-function openPopup() {
-  document.getElementById("popup").style.display = "flex";
-  document.getElementById("popup-frame").src = "Booking.html";
-}
-
-function closePopup(event) {
-  if (event.target.id === "popup" || event.target.id === "close-popup") {
-    document.getElementById("popup").style.display = "none";
-    document.getElementById("popup-frame").src = "";
+  function openPopup() {
+      document.getElementById("popupOverlay").style.display = "flex";
   }
-}
+
+  function closePopupOutside(event) {
+      document.getElementById("popupOverlay").style.display = "none";
+  }
 </script>
 
 </body>
