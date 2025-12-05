@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life Studio - Solutions Multimedias</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -29,7 +30,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 1000;
+            z-index: 2000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
@@ -58,7 +59,6 @@
             font-size: 18px;
             font-weight: 500;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
             cursor: pointer;
             position: relative;
             padding-bottom: 5px;
@@ -90,13 +90,13 @@
             width: 100%;
         }
 
-        /* ADDED: Hamburger Button */
+        /* Hamburger Button */
         .hamburger {
             display: none;
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
-            z-index: 2000;
+            z-index: 2500;
         }
 
         .hamburger span {
@@ -107,41 +107,48 @@
             transition: 0.3s;
         }
 
-        /* Mobile Menu (hidden by default) */
+        /* Slide-in Mobile Menu (RIGHT SIDE) */
         nav.mobile-nav {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            width: 100%;
+            position: fixed;
+            top: 0;
+            right: -280px; /* hidden */
+            width: 280px;
+            height: 100vh;
             background: white;
+            padding-top: 120px;
+            box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.4s ease;
+            z-index: 1800;
+            display: flex;
             flex-direction: column;
-            padding: 20px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        nav.mobile-nav.show {
+            right: 0;
         }
 
         nav.mobile-nav ul {
+            list-style: none;
+            display: flex;
             flex-direction: column;
-            gap: 20px;
-            text-align: center;
+            gap: 35px;
+            padding-left: 40px;
         }
 
-        /* Mobile Styles */
-        @media (max-width: 768px) {
+        nav.mobile-nav a {
+            font-size: 22px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+        }
 
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
             nav ul {
-                display: none; /* hide desktop menu */
+                display: none;
             }
 
             .hamburger {
-                display: flex; /* show hamburger */
-            }
-
-            nav.mobile-nav {
-                display: none; /* stays hidden until activated */
-            }
-
-            nav.mobile-nav.show {
                 display: flex;
             }
 
@@ -174,14 +181,12 @@
             line-height: 1.2;
             margin-bottom: 30px;
             text-shadow: 10px 10px 4px rgba(0,0,0,0.2);
-            font-family: 'Montserrat', sans-serif;
         }
 
         .stars {
             display: flex;
             gap: 10px;
             margin-bottom: 40px;
-            align-items: center;
         }
 
         .star-rating {
@@ -201,8 +206,8 @@
             background-image: url('images/Star.png');
             background-size: contain;
             background-repeat: no-repeat;
-            transition: all 0.3s ease;
             filter: grayscale(100%) brightness(0.8);
+            transition: all 0.3s ease;
         }
 
         .star-rating label:hover,
@@ -230,7 +235,6 @@
             gap: 10px;
             transition: all 0.3s;
             text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
         }
 
         .btn:hover {
@@ -244,14 +248,12 @@
             right: 15%;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 3;
         }
 
         .camera-image {
             width: 550px;
-            height: auto;
-            filter: drop-shadow(0 15px 40px rgba(0,0,0,0.4));
             animation: floatCamera 6s ease-in-out infinite;
+            filter: drop-shadow(0 15px 40px rgba(0,0,0,0.4));
         }
 
         @keyframes floatCamera {
@@ -261,10 +263,8 @@
 
         .design-element {
             position: absolute;
-            height: auto;
             opacity: 0.8;
             animation: floatDesign 10s ease-in-out infinite;
-            z-index: 1;
         }
 
         .design-1 {
@@ -310,91 +310,82 @@
         }
     </style>
 </head>
+
 <body>
 
-    <header>
-        <a href="homepage.html" class="logo">
-            <img src="images/LS Logo.png" alt="Life Studio - Solutions Multimedias">
-        </a>
+<header>
+    <a href="homepage.html" class="logo">
+        <img src="images/LS Logo.png" alt="Life Studio - Solutions Multimedias">
+    </a>
 
-        <!-- ADDED: Hamburger -->
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-        <nav>
-            <ul>
-                <li><a href="index.html" class="nav-link active" data-page="home">Home</a></li>
-                <li><a href="about_page.html" class="nav-link" data-page="about">About</a></li>
-                <li><a href="services.html" class="nav-link" data-page="services">Services</a></li>
-                <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
-            </ul>
-        </nav>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="about_page.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
 
-        <!-- ADDED: MOBILE NAV DROPDOWN -->
-        <nav class="mobile-nav" id="mobileNav">
-            <ul>
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="about_page.html" class="nav-link">About</a></li>
-                <li><a href="services.html" class="nav-link">Services</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- MOBILE SLIDE-IN MENU -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html" class="nav-link active">Home</a></li>
+            <li><a href="about_page.html" class="nav-link">About</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>
-                Capturing<br>
-                Moments<br>
-                With Quality<br>
-                and Creativity.
-            </h1>
+<section class="hero">
+    <div class="hero-content">
+        <h1>
+            Capturing<br>
+            Moments<br>
+            With Quality<br>
+            and Creativity.
+        </h1>
 
-            <div class="stars">
-                <div class="star-rating">
-                    <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
-                    <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
-                    <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
-                    <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
-                    <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
-                </div>
-            </div>
-
-            <div class="cta-buttons">
-                <a href="services.html" class="btn">View Work <span class="arrow">→</span></a>
-                <a href="contact.html" class="btn">Contact Us <span class="arrow">→</span></a>
+        <div class="stars">
+            <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
             </div>
         </div>
 
-        <div class="camera-container">
-            <img src="images/camera.png" class="camera-image" alt="Vintage Camera">
+        <div class="cta-buttons">
+            <a href="services.html" class="btn">View Work →</a>
+            <a href="contact.html" class="btn">Contact Us →</a>
         </div>
+    </div>
 
-        <img src="images/design-1.png" class="design-element design-1">
-        <img src="images/design-2.png" class="design-element design-2">
-    </section>
+    <div class="camera-container">
+        <img src="images/camera.png" class="camera-image" alt="Vintage Camera">
+    </div>
 
-    <script>
-        // Set active nav link
-        function setActiveNav() {
-            const currentPage = window.location.pathname.split('/').pop() || 'homepage.html';
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === currentPage);
-            });
-        }
-        window.addEventListener('DOMContentLoaded', setActiveNav);
+    <img src="images/design-1.png" class="design-element design-1">
+    <img src="images/design-2.png" class="design-element design-2">
+</section>
 
-        // ADDED: Mobile menu toggle
-        const hamburger = document.getElementById("hamburger");
-        const mobileNav = document.getElementById("mobileNav");
+<script>
+    // Slide-in Mobile Menu
+    const hamburger = document.getElementById("hamburger");
+    const mobileNav = document.getElementById("mobileNav");
 
-        hamburger.addEventListener("click", () => {
-            mobileNav.classList.toggle("show");
-        });
-    </script>
+    hamburger.addEventListener("click", () => {
+        mobileNav.classList.toggle("show");
+    });
+</script>
 
 </body>
 </html>
