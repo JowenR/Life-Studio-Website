@@ -1,202 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services</title>
 
-    <link rel="stylesheet" href="services.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Azeret+Mono' rel='stylesheet'>
-	
-	<!-- Added: modal styles -->
-	<style>
-		/* Booking modal styles */
-		#booking-modal.hidden{display:none;}
-		#booking-modal{
-			position:fixed;
-			inset:0;
-			display:flex;
-			align-items:center;
-			justify-content:center;
-			z-index:1000;
-		}
-		#booking-modal .modal-backdrop{
-			position:absolute;
-			inset:0;
-			background:transparent;
-		}
-		#booking-modal .modal-panel{
-			position:relative;
-			background:transparent;
-			width:92%;
-			max-width:500px;
-			max-height:90%;
-			border-radius:8px;
-			overflow:hidden;
-			z-index:1;
-		}
-		#booking-modal .modal-close{
-			position:absolute;
-			top:8px;
-			right:8px;
-			background:transparent;
-			border:none;
-			font-size:28px;
-			line-height:1;
-			cursor:pointer;
-			z-index:2;
-		}
-		#booking-modal iframe{
-			width:100%;
-			height:80vh;
-			border:0;
-			display:block;
-		}
-		@media(min-width:768px){ #booking-modal iframe{ height:75vh; } }
-	</style>
+<link rel="stylesheet" href="services.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Azeret+Mono' rel='stylesheet'>
+
+<style>
+/* --- Responsive / Hamburger Menu --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 15px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar .logo img {
+    height: 75px;
+    width: auto;
+    max-width: 250px;
+    object-fit: contain;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.navbar ul li a:hover {
+    color: #8B0000;
+}
+
+.navbar ul li a.active {
+    color: #8B0000;
+    font-weight: 600;
+}
+
+/* Hamburger icon */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 2500;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: #333;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Mobile Slide-in Menu */
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 100vh;
+    background: white;
+    padding-top: 120px;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+    transition: right 0.4s ease;
+    z-index: 1400;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav.show {
+    right: 0;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    padding-left: 40px;
+}
+
+.mobile-nav ul li a {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+}
+
+/* Booking modal styles (unchanged) */
+#booking-modal.hidden{display:none;}
+#booking-modal{
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:1000;
+}
+#booking-modal .modal-backdrop{
+    position:absolute;
+    inset:0;
+    background:transparent;
+}
+#booking-modal .modal-panel{
+    position:relative;
+    background:transparent;
+    width:92%;
+    max-width:500px;
+    max-height:90%;
+    border-radius:8px;
+    overflow:hidden;
+    z-index:1;
+}
+#booking-modal .modal-close{
+    position:absolute;
+    top:8px;
+    right:8px;
+    background:transparent;
+    border:none;
+    font-size:28px;
+    line-height:1;
+    cursor:pointer;
+    z-index:2;
+}
+#booking-modal iframe{
+    width:100%;
+    height:80vh;
+    border:0;
+    display:block;
+}
+@media(min-width:768px){ #booking-modal iframe{ height:75vh; } }
+
+/* --- Responsive adjustments --- */
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 130px;
+    }
+
+
+    .wedding, .debut, .graduation, .Schoolcere, .Ordination, .school-ID, .idmaterials {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pic, .pic-id {
+        margin-bottom: 15px;
+    }
+
+    .Button h4.btn {
+        font-size: 16px;
+    }
+}
+
+.Button {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.Button {
+    display: flex;
+    gap: 15px; 
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 15px;
+}
+
+.Button a h4.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 140px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 16px;
+}
+
+
+</style>
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <a href="#"><img src="LS Logo.png" width="330" height="120" alt="LS Logo"></a></div>
 
+<!-- Navbar with Hamburger -->
+<nav class="navbar">
+    <div class="logo">
+        <a href="#"><img src="LS Logo.png" width="330" height="120" alt="LS Logo"></a>
+    </div>
+
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about_page.html">About</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <!-- Mobile Slide-in Menu -->
+    <nav class="mobile-nav" id="mobileNav">
         <ul>
-            <li><a href="in">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="about_page.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
+</nav>
 
-    <h2>Services We Offer</h2>
+<!-- === KEEP EVERYTHING BELOW EXACTLY AS-IS === -->
 
-    <div class="wedding">
-        <div class="pic">
-            <div class="bg"></div>
-            <img src="pics/wedding.png" alt="Wedding Picture">
-        </div>
-        <div class="wed-cont">
-            <h3>Wedding</h3>
-            <p>
-                Capture the beauty, joy, and romance of <br>your special day with timeless wedding <br>photos. From intimate moments to <br>grand celebrations, we preserve every <br>detail of your love story.
-            </p>
-            <div class="Button">
-                <a href="Weddings.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
-                <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
-            </div>
+<h2>Services We Offer</h2>
+
+<div class="wedding">
+    <div class="pic">
+        <div class="bg"></div>
+        <img src="pics/wedding.png" alt="Wedding Picture">
+    </div>
+    <div class="wed-cont">
+        <h3>Wedding</h3>
+        <p>
+            Capture the beauty, joy, and romance of <br>your special day with timeless wedding <br>photos. From intimate moments to <br>grand celebrations, we preserve every <br>detail of your love story.
+        </p>
+        <div class="Button">
+            <a href="Weddings.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+            <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
         </div>
     </div>
+</div>
 
-    <hr class="wed_line"> 
+<hr class="wed_line"> 
 
-    <div class="debut">
-        <div class="pic">
-            <div class="bg"></div>
-            <img src="pics/debut.png" alt="Debut Picture">
-        </div>
-        <div class="deb-cont">
-            <h3>Debut</h3>
-            <p>
-                Celebrate your milestone 18th birthday <br>with stunning photos that showcase <br>your elegance and personality. We <br>capture every highlight of your special<br>night—from the grand entrance to the<br>memorable traditions.
-            </p>
-            <div class="Button">
-                <a href="Debut.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
-                <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
-            </div>
+<div class="debut">
+    <div class="pic">
+        <div class="bg"></div>
+        <img src="pics/debut.png" alt="Debut Picture">
+    </div>
+    <div class="deb-cont">
+        <h3>Debut</h3>
+        <p>
+            Celebrate your milestone 18th birthday <br>with stunning photos that showcase <br>your elegance and personality. We <br>capture every highlight of your special<br>night—from the grand entrance to the<br>memorable traditions.
+        </p>
+        <div class="Button">
+            <a href="Debut.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+            <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
         </div>
     </div>
+</div>
 
-    <hr class="debut_line">
+<hr class="debut_line">
 
-    <div class="graduation">
-        <div class="pic">
-            <div class="bg"></div>
-            <img src="pics/graduation.png" alt="Graduation Picture">
-        </div>
-
-        <div class="grad-cont">
-            <h3>Graduation</h3>
-            <p>
-                Celebrate your achievement with <br>timeless portraits that highlight your <br>success and personality. We'll capture <br>the pride, joy, and unforgettable <br>moments of your special day.
-            </p>
-            <div class="Button">
-                <a href="graduation.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
-                <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
-            </div>
-        </div>
-    </div>
-    
-    <hr class="grad-line">
-
-    <div class="Schoolcere">
-        <div class="pic">
-            <div class="bg"></div>
-            <img src="pics/school_ceremonies.png" alt="School Ceremonies Picture">
-        </div>
-        <div class="schoolcere-cont">
-            <h3>School Ceremonies</h3>
-            <p>
-                From moving-up events to recognition<br>days, we capture every proud moment<br>on stage and off. Relive the excitement,<br>joy, and memories of your school<br>milestones through vibrant, lasting<br>photos.
-            </p>
-            <div class="Button">
-                <a href="School Ceremonies.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
-                <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
-            </div>
-        </div>
+<div class="graduation">
+    <div class="pic">
+        <div class="bg"></div>
+        <img src="pics/graduation.png" alt="Graduation Picture">
     </div>
 
-    <hr class="schoolcere_line">
-
-    <div class="Ordination">
-        <div class="pic">
-            <div class="bg"></div>
-            <img src="pics/ordination.png" alt="Ordination Picture">
-        </div>
-        <div class="ordi-cont">
-            <h3>Ordination</h3>
-            <p>
-                Honor this sacred milestone with <br>reverent and meaningful photos that <br>reflect the beauty of your calling. <br>We capture the solemnity, joy, and <br>spiritual significance of your <br>ordination day.
-            </p>
-            <div class="Button">
-                <a href="Ordination.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
-                <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
-            </div>
+    <div class="grad-cont">
+        <h3>Graduation</h3>
+        <p>
+            Celebrate your achievement with <br>timeless portraits that highlight your <br>success and personality. We'll capture <br>the pride, joy, and unforgettable <br>moments of your special day.
+        </p>
+        <div class="Button">
+            <a href="graduation.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+            <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
         </div>
     </div>
+</div>
 
-    <hr class="ordi_line">
+<hr class="grad-line">
 
-    <div class="school-ID">
-        <div class="pic-id">
-            <div class="bg-id"></div>
-            <img src="pics/school_id.png" alt="School ID Picture" class="schoolid">
-        </div>
-        <div class="school-ID-cont">
-            <h3>School ID</h3>
-            <p>
-                Professional, clear, and polished ID<br>photos designed to meet school<br>requirements. We ensure every shot is<br>neat, presentable, and ready for official<br>use.
-            </p>
-            <div class="Button">
-                <a href="SchoolID.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
-                <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
-            </div>
+<div class="Schoolcere">
+    <div class="pic">
+        <div class="bg"></div>
+        <img src="pics/school_ceremonies.png" alt="School Ceremonies Picture">
+    </div>
+    <div class="schoolcere-cont">
+        <h3>School Ceremonies</h3>
+        <p>
+            From moving-up events to recognition<br>days, we capture every proud moment<br>on stage and off. Relive the excitement,<br>joy, and memories of your school<br>milestones through vibrant, lasting<br>photos.
+        </p>
+        <div class="Button">
+            <a href="School Ceremonies.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+            <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
         </div>
     </div>
+</div>
 
-    <hr class="school-ID_line">
+<hr class="schoolcere_line">
 
-    <div class="idmaterials">
-
-        <div class="pic-id">
-            <div class="bgid"></div>
-            <img src="pics/idmaterials.webp" alt="ID materials" >
+<div class="Ordination">
+    <div class="pic">
+        <div class="bg"></div>
+        <img src="pics/ordination.png" alt="Ordination Picture">
+    </div>
+    <div class="ordi-cont">
+        <h3>Ordination</h3>
+        <p>
+            Honor this sacred milestone with <br>reverent and meaningful photos that <br>reflect the beauty of your calling. <br>We capture the solemnity, joy, and <br>spiritual significance of your <br>ordination day.
+        </p>
+        <div class="Button">
+            <a href="Ordination.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+            <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
         </div>
+    </div>
+</div>
 
-        <div class="idmaterials-cont">
-            <h3>Retail of ID materials</h3>
+<hr class="ordi_line">
+
+<div class="school-ID">
+    <div class="pic-id">
+        <div class="bg-id"></div>
+        <img src="pics/school_id.png" alt="School ID Picture" class="schoolid">
+    </div>
+    <div class="school-ID-cont">
+        <h3>School ID</h3>
+        <p>
+            Professional, clear, and polished ID<br>photos designed to meet school<br>requirements. We ensure every shot is<br>neat, presentable, and ready for official<br>use.
+        </p>
+        <div class="Button">
+            <a href="SchoolID.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
+            <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
+        </div>
+    </div>
+</div>
+
+<hr class="school-ID_line">
+
+<div class="idmaterials">
+    <div class="pic-id">
+        <div class="bgid"></div>
+        <img src="pics/idmaterials.webp" alt="ID materials" >
+    </div>
+    <div class="idmaterials-cont">
+        <h3>Retail of ID materials</h3>
         <p>
             We provide high-quality ID accessories<br> such as lanyards, holders, and cases to<br> keep your IDs secure and professional.<br> Durable and stylish options are available<br> to suit every school or organization’s<br> needs.
         </p>
@@ -204,59 +390,65 @@
             <a href="ID Materials.html" target="_blank"><h4 class="btn">Samples ↗</h4></a>
             <a href="Booking.html" target="_blank"><h4 class="btn">Book Now</h4></a>
         </div>
-
     </div>
+</div>
 
-	<!-- Added: modal HTML (insert near end of body, before </body>) -->
-	<div id="booking-modal" class="hidden" aria-hidden="true">
-		<div class="modal-backdrop"></div>
-		<div class="modal-panel" role="dialog" aria-modal="true" aria-label="Booking">
-			<iframe id="booking-iframe" src="" title="Booking"></iframe>
-		</div>
-	</div>
+<!-- Booking Modal -->
+<div id="booking-modal" class="hidden" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Booking">
+        <iframe id="booking-iframe" src="" title="Booking"></iframe>
+    </div>
+</div>
 
-	<!-- Added: script to open Booking.html in modal and close on outside click / Escape -->
-	<script>
-		document.addEventListener('DOMContentLoaded', function(){
-			const modal = document.getElementById('booking-modal');
-			const iframe = document.getElementById('booking-iframe');
+<!-- Scripts -->
+<script>
+    // Hamburger toggle
+    const hamburger = document.getElementById("hamburger");
+    const mobileNav = document.getElementById("mobileNav");
 
-			function openModal(url){
-				iframe.src = url;
-				modal.classList.remove('hidden');
-				modal.setAttribute('aria-hidden','false');
-				document.body.style.overflow = 'hidden';
-			}
-			function closeModal(){
-				modal.classList.add('hidden');
-				modal.setAttribute('aria-hidden','true');
-				iframe.src = '';
-				document.body.style.overflow = '';
-			}
+    hamburger.addEventListener("click", () => {
+        mobileNav.classList.toggle("show");
+    });
 
-			// Intercept clicks on links that point to Booking.html (keeps href for fallback)
-			document.addEventListener('click', function(e){
-				const a = e.target.closest('a[href]');
-				if(!a) return;
-				const href = a.getAttribute('href');
-				if(!href) return;
-				// Match Booking.html (relative or plain)
-				if(href.replace(/^\.\//,'') === 'Booking.html' || href.endsWith('/Booking.html') || href.endsWith('Booking.html')){
-					e.preventDefault();
-					openModal(href);
-				}
-			});
+    // Booking modal
+    document.addEventListener('DOMContentLoaded', function(){
+        const modal = document.getElementById('booking-modal');
+        const iframe = document.getElementById('booking-iframe');
 
-			// Close when clicking backdrop/outside panel
-			modal.addEventListener('click', function(e){
-				if(e.target.classList.contains('modal-backdrop') || e.target === modal) closeModal();
-			});
+        function openModal(url){
+            iframe.src = url;
+            modal.classList.remove('hidden');
+            modal.setAttribute('aria-hidden','false');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(){
+            modal.classList.add('hidden');
+            modal.setAttribute('aria-hidden','true');
+            iframe.src = '';
+            document.body.style.overflow = '';
+        }
 
-			// Close on Escape
-			document.addEventListener('keydown', function(e){
-				if(e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
-			});
-		});
-	</script>
+        document.addEventListener('click', function(e){
+            const a = e.target.closest('a[href]');
+            if(!a) return;
+            const href = a.getAttribute('href');
+            if(!href) return;
+            if(href.replace(/^\.\//,'') === 'Booking.html' || href.endsWith('/Booking.html') || href.endsWith('Booking.html')){
+                e.preventDefault();
+                openModal(href);
+            }
+        });
+
+        modal.addEventListener('click', function(e){
+            if(e.target.classList.contains('modal-backdrop') || e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e){
+            if(e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+        });
+    });
+</script>
+
 </body>
 </html>
