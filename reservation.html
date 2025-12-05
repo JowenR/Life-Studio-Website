@@ -22,14 +22,6 @@ body{
   padding:30px 10px;
 }
 
-/* TWO CARDS SIDE BY SIDE */
-.wrapper{
-  display:flex;
-  gap:25px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-
 /* MAIN CARD */
 .container{
   background: linear-gradient(to bottom, var(--light-bg), #F5DFA8);
@@ -134,67 +126,36 @@ body{
 }
 .btn-small:hover{ transform:scale(1.03); }
 
-/* CONFIRMED CARD STYLES */
-.confirm-card{
-  background: linear-gradient(to bottom, #f5ffe5, #e4f2c2);
-  width: 450px;
-  max-width: 95%;
-  padding: 30px;
-  border-radius: 22px;
-  color: var(--accent);
-  text-align:center;
-}
-
-.confirm-card h1{
-  margin:0;
-  font-size:30px;
-  font-weight:900;
-}
-
-.confirm-list{
-  margin-top:20px;
-  background:white;
-  padding:20px;
-  border-radius:16px;
-  box-shadow:0 3px 8px rgba(0,0,0,0.12);
-}
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
+<div class="container">
+  
+  <h1>RESERVATIONS</h1>
+  <p class="subtitle">YOUR SAVED BOOKINGS</p>
 
-  <!-- LEFT SIDE: Pending Reservations -->
-  <div class="container">
-    <h1>RESERVATIONS</h1>
-    <p class="subtitle">YOUR SAVED BOOKINGS</p>
-
-    <div class="btn-row">
-      <button class="btn-small" onclick="selectAll()">Select All</button>
-      <button class="btn-small" onclick="unselectAll()">Unselect All</button>
-    </div>
-
-    <div class="reservation-card">
-        <div id="reservationList"></div>
-    </div>
-
-    <button class="action-btn" onclick="confirmSelected()">Confirm Selected Reservation</button>
-    <button class="action-btn" onclick="cancelSelected()">Cancel Selected Reservation</button>
-    <button class="action-btn" onclick="clearReservations()">Clear All Reservations</button>
+  <!-- Select Buttons -->
+  <div class="btn-row">
+    <button class="btn-small" onclick="selectAll()">Select All</button>
+    <button class="btn-small" onclick="unselectAll()">Unselect All</button>
   </div>
 
-  <!-- RIGHT SIDE: Confirmed Reservations -->
-  <div class="confirm-card">
-    <h1>CONFIRMED</h1>
-    <p class="subtitle">LIST OF CONFIRMED BOOKINGS</p>
-
-    <div class="confirm-list" id="confirmedList"></div>
+  <div class="reservation-card">
+      <div id="reservationList"></div>
   </div>
+
+  <!-- Action Buttons -->
+  <button class="action-btn" onclick="confirmSelected()">Confirm Selected Reservation</button>
+  <button class="action-btn" onclick="cancelSelected()">Cancel Selected Reservation</button>
+
+  <button class="action-btn" onclick="clearReservations()">Clear All Reservations</button>
 
 </div>
 
 <script>
+/* LOAD RESERVATIONS */
 function loadReservations(){
   let list = document.getElementById("reservationList");
   let data = JSON.parse(localStorage.getItem("reservations")) || [];
@@ -220,46 +181,22 @@ function loadReservations(){
         <p class="res-date">${item.date}</p>
       </div>
     `;
+
     list.appendChild(div);
   });
 }
 
-function loadConfirmed(){
-  let list = document.getElementById("confirmedList");
-  let data = JSON.parse(localStorage.getItem("confirmedReservations")) || [];
-
-  if(data.length === 0){
-    list.innerHTML = `<p class="no-reservations">No confirmed reservations.</p>`;
-    return;
-  }
-
-  list.innerHTML = "";
-
-  data.forEach(item => {
-    let div = document.createElement("div");
-    div.className = "res-item";
-
-    div.innerHTML = `
-      <div>
-        <p class="res-label">SERVICE</p>
-        <p class="res-service">${item.service}</p>
-
-        <p class="res-label" style="margin-top:10px;">DATE CONFIRMED</p>
-        <p class="res-date">${item.date}</p>
-      </div>
-    `;
-    list.appendChild(div);
-  });
-}
-
+/* SELECT ALL */
 function selectAll(){
   document.querySelectorAll(".res-check").forEach(c => c.checked = true);
 }
 
+/* UNSELECT ALL */
 function unselectAll(){
   document.querySelectorAll(".res-check").forEach(c => c.checked = false);
 }
 
+/* CANCEL SELECTED */
 function cancelSelected(){
   let data = JSON.parse(localStorage.getItem("reservations")) || [];
   let checks = document.querySelectorAll(".res-check");
@@ -270,10 +207,10 @@ function cancelSelected(){
   loadReservations();
 }
 
+/* CONFIRM SELECTED */
 function confirmSelected(){
   let checks = document.querySelectorAll(".res-check");
   let data = JSON.parse(localStorage.getItem("reservations")) || [];
-  let confirmed = JSON.parse(localStorage.getItem("confirmedReservations")) || [];
 
   let selected = data.filter((item, index) => checks[index].checked);
 
@@ -282,16 +219,11 @@ function confirmSelected(){
     return;
   }
 
-  confirmed.push(...selected);
-  localStorage.setItem("confirmedReservations", JSON.stringify(confirmed));
-
-  let remaining = data.filter((item, index) => !checks[index].checked);
-  localStorage.setItem("reservations", JSON.stringify(remaining));
-
-  loadReservations();
-  loadConfirmed();
+  alert("Reservation Confirmed:\n\n" + 
+        selected.map(s => `• ${s.service} (${s.date})`).join("\n"));
 }
 
+/* CLEAR ALL */
 function clearReservations(){
   if(confirm("Clear all reservations?")){
     localStorage.removeItem("reservations");
@@ -300,7 +232,6 @@ function clearReservations(){
 }
 
 loadReservations();
-loadConfirmed();
 </script>
 
 </body>
