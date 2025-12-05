@@ -114,8 +114,17 @@
     position: relative;
   }
 
-  /* POPUP CONTENT (Booking.html iframe) */
-  .popup-box iframe {
+  /* CLOSE BUTTON */
+  #close-popup {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 35px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  iframe {
     width: 100%;
     height: 100%;
     border: none;
@@ -183,7 +192,7 @@
 
 <!-- BOOK NOW BUTTON (OPEN POPUP) -->
 <button onclick="openPopup()" 
-  style="font-size:100%; background-color:#F5DFA8; border-radius:50px; padding:10px; width:150px; font-weight:bold; cursor: pointer; margin-top: 790px;">
+  style="font-size:100%; background-color:#F5DFA8; border-radius:50px; padding:10px; width:150px; font-weight:bold; cursor: pointer; margin-top: 800px;">
   Book Now
 </button>
 
@@ -193,8 +202,6 @@
       <iframe src="Booking.html"></iframe>
   </div>
 </div>
-
-
 
 <script>
   function openPopup() {
