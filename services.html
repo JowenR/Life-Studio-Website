@@ -25,17 +25,16 @@
 		#booking-modal .modal-backdrop{
 			position:absolute;
 			inset:0;
-			background:rgba(0,0,0,0.6);
+			background:transparent;
 		}
 		#booking-modal .modal-panel{
 			position:relative;
-			background:#fff;
+			background:transparent;
 			width:92%;
-			max-width:900px;
+			max-width:500px;
 			max-height:90%;
 			border-radius:8px;
 			overflow:hidden;
-			box-shadow:0 10px 30px rgba(0,0,0,0.3);
 			z-index:1;
 		}
 		#booking-modal .modal-close{
@@ -212,7 +211,6 @@
 	<div id="booking-modal" class="hidden" aria-hidden="true">
 		<div class="modal-backdrop"></div>
 		<div class="modal-panel" role="dialog" aria-modal="true" aria-label="Booking">
-			<button class="modal-close" aria-label="Close booking panel">&times;</button>
 			<iframe id="booking-iframe" src="" title="Booking"></iframe>
 		</div>
 	</div>
@@ -222,7 +220,6 @@
 		document.addEventListener('DOMContentLoaded', function(){
 			const modal = document.getElementById('booking-modal');
 			const iframe = document.getElementById('booking-iframe');
-			const closeBtn = modal.querySelector('.modal-close');
 
 			function openModal(url){
 				iframe.src = url;
@@ -254,7 +251,6 @@
 			modal.addEventListener('click', function(e){
 				if(e.target.classList.contains('modal-backdrop') || e.target === modal) closeModal();
 			});
-			closeBtn.addEventListener('click', closeModal);
 
 			// Close on Escape
 			document.addEventListener('keydown', function(e){
