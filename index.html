@@ -16,7 +16,6 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            
         }
 
         /* Header Styles */
@@ -91,6 +90,66 @@
             width: 100%;
         }
 
+        /* ADDED: Hamburger Button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 2000;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #333;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        /* Mobile Menu (hidden by default) */
+        nav.mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        nav.mobile-nav ul {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+
+            nav ul {
+                display: none; /* hide desktop menu */
+            }
+
+            .hamburger {
+                display: flex; /* show hamburger */
+            }
+
+            nav.mobile-nav {
+                display: none; /* stays hidden until activated */
+            }
+
+            nav.mobile-nav.show {
+                display: flex;
+            }
+
+            header {
+                padding: 15px 25px;
+            }
+        }
+
         /* Hero Section */
         .hero {
             position: relative;
@@ -152,15 +211,6 @@
             filter: grayscale(0%) brightness(1);
         }
 
-        .star-rating:hover label {
-            filter: grayscale(100%) brightness(0.8);
-        }
-
-        .star-rating label:hover,
-        .star-rating label:hover ~ label {
-            filter: grayscale(0%) brightness(1);
-        }
-
         .cta-buttons {
             display: flex;
             gap: 20px;
@@ -189,11 +239,6 @@
             transform: translateY(-2px);
         }
 
-        .arrow {
-            font-size: 20px;
-        }
-
-        /* Camera and Design Images */
         .camera-container {
             position: absolute;
             right: 15%;
@@ -210,15 +255,10 @@
         }
 
         @keyframes floatCamera {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
         }
 
-        /* Design Elements - Film Strips */
         .design-element {
             position: absolute;
             height: auto;
@@ -232,8 +272,6 @@
             top: 20%;
             right: 10%;
             transform: rotate(-60deg);
-            animation-delay: 0s;
-            z-index: 1;
         }
 
         .design-2 {
@@ -241,60 +279,14 @@
             top: 25%;
             right: 34%;
             transform: rotate(25deg);
-            animation-delay: 0s;
-            z-index: 1;
         }
 
         @keyframes floatDesign {
-            0%, 100% {
-                transform: translateY(0) rotate(-15deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(-10deg);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 56px;
-            }
-
-            .camera-image {
-                width: 350px;
-            }
-
-            .design-1 {
-                width: 250px;
-                top: 10%;
-                right: 20%;
-            }
-
-            .design-2 {
-                width: 200px;
-                top: 40%;
-                right: 45%;
-            }
-
-            .star-image {
-                width: 30px;
-                height: 30px;
-            }
+            0%, 100% { transform: translateY(0) rotate(-15deg); }
+            50% { transform: translateY(-20px) rotate(-10deg); }
         }
 
         @media (max-width: 768px) {
-            header {
-                padding: 15px 30px;
-            }
-
-            nav ul {
-                gap: 25px;
-            }
-
-            nav a {
-                font-size: 16px;
-            }
-
             .hero {
                 padding: 0 30px;
             }
@@ -307,11 +299,6 @@
                 font-size: 42px;
             }
 
-            .cta-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-
             .camera-container {
                 opacity: 0.3;
                 right: -10%;
@@ -320,100 +307,39 @@
             .design-element {
                 display: none;
             }
-
-            .star-image {
-                width: 25px;
-                height: 25px;
-            }
-        }
-
-        /* 📱 FULL MOBILE RESPONSIVENESS ADDED HERE */
-        @media (max-width: 480px) {
-
-            header {
-                padding: 15px 20px;
-            }
-
-            .logo img {
-                height: 55px;
-            }
-
-            nav ul {
-                gap: 15px;
-            }
-
-            nav a {
-                font-size: 14px;
-            }
-
-            /* HERO */
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
-                height: auto;
-            }
-
-            .hero-content {
-                max-width: 100%;
-                margin-top: 20px;
-            }
-
-            .hero h1 {
-                font-size: 34px;
-                line-height: 1.2;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                gap: 10px;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-                padding: 12px;
-            }
-
-            /* Camera */
-            .camera-container {
-                position: relative;
-                right: 0;
-                top: 0;
-                transform: none;
-                margin-top: 20px;
-                opacity: 0.4;
-            }
-
-            .camera-image {
-                width: 220px;
-            }
-
-            /* Hide decorative designs */
-            .design-element {
-                display: none !important;
-            }
-
-            /* Stars */
-            .star-rating label {
-                width: 28px;
-                height: 28px;
-            }
         }
     </style>
 </head>
 <body>
+
     <header>
         <a href="homepage.html" class="logo">
             <img src="images/LS Logo.png" alt="Life Studio - Solutions Multimedias">
         </a>
+
+        <!-- ADDED: Hamburger -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
         <nav>
             <ul>
                 <li><a href="index.html" class="nav-link active" data-page="home">Home</a></li>
                 <li><a href="about_page.html" class="nav-link" data-page="about">About</a></li>
                 <li><a href="services.html" class="nav-link" data-page="services">Services</a></li>
                 <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- ADDED: MOBILE NAV DROPDOWN -->
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="about_page.html" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link">Services</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -426,76 +352,49 @@
                 With Quality<br>
                 and Creativity.
             </h1>
+
             <div class="stars">
                 <div class="star-rating">
-                    <input type="radio" id="star5" name="rating" value="5">
-                    <label for="star5"></label>
-                    <input type="radio" id="star4" name="rating" value="4">
-                    <label for="star4"></label>
-                    <input type="radio" id="star3" name="rating" value="3">
-                    <label for="star3"></label>
-                    <input type="radio" id="star2" name="rating" value="2">
-                    <label for="star2"></label>
-                    <input type="radio" id="star1" name="rating" value="1">
-                    <label for="star1"></label>
+                    <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
                 </div>
             </div>
+
             <div class="cta-buttons">
-                <a href="services.html" class="btn">
-                    View Work
-                    <span class="arrow">→</span>
-                </a>
-                <a href="contact.html" class="btn">
-                    Contact Us
-                    <span class="arrow">→</span>
-                </a>
+                <a href="services.html" class="btn">View Work <span class="arrow">→</span></a>
+                <a href="contact.html" class="btn">Contact Us <span class="arrow">→</span></a>
             </div>
         </div>
 
-        <!-- Camera Image -->
         <div class="camera-container">
-            <img src="images/camera.png" alt="Vintage Camera" class="camera-image">
+            <img src="images/camera.png" class="camera-image" alt="Vintage Camera">
         </div>
 
-        <!-- Design Elements -->
-        <img src="images/design-1.png" alt="Design Element" class="design-element design-1">
-        <img src="images/design-2.png" alt="Design Element" class="design-element design-2">
+        <img src="images/design-1.png" class="design-element design-1">
+        <img src="images/design-2.png" class="design-element design-2">
     </section>
 
     <script>
-        // Set active navigation link based on current page
+        // Set active nav link
         function setActiveNav() {
             const currentPage = window.location.pathname.split('/').pop() || 'homepage.html';
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                const href = link.getAttribute('href');
-                if (href === currentPage || (currentPage === '' && href === 'homepage.html')) {
-                    link.classList.add('active');
-                }
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === currentPage);
             });
         }
-
-        // Call setActiveNav when page loads
         window.addEventListener('DOMContentLoaded', setActiveNav);
 
-        // Debug function - check if files exist
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    console.log('Attempting to navigate to:', href);
-                    
-                    // Check if it's the services link
-                    if (href.includes('service')) {
-                        console.log('Services link clicked');
-                        // Let the default behavior happen
-                    }
-                });
-            });
+        // ADDED: Mobile menu toggle
+        const hamburger = document.getElementById("hamburger");
+        const mobileNav = document.getElementById("mobileNav");
+
+        hamburger.addEventListener("click", () => {
+            mobileNav.classList.toggle("show");
         });
     </script>
+
 </body>
 </html>
