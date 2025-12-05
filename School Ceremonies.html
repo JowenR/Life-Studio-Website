@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Debut</title>
+<title>School Ceremonies</title>
 <style>
   body {
     background: #F6ECD0;
@@ -18,21 +18,26 @@
     font-size: 40px;
     font-weight: 600;
     color: #4A1E1E;
+    z-index: 20;
+    pointer-events: none;
   }
 
+  /* BIG CENTER TITLE */
   .title {
     position: absolute;
     top: 70px;
     left: 50%;
     transform: translateX(-50%);
     font-family: Orelega One;
-    font-size: 150px;
+    font-size: 110px;
     font-weight: 900;
     color: #4A1E1E;
+    z-index: 30;
     white-space: nowrap;
+    pointer-events: none;
   }
 
-  .debut {
+  .marquee {
     width: 100%;
     overflow: hidden;
     position: absolute;
@@ -42,23 +47,28 @@
     background-color: #F6DC9B;
   }
 
-  .debut-content {
+  .marquee-content {
     display: flex;
     animation: scroll 12s linear infinite;
   }
 
-  .debut-content img {
-    width: 240px;
+  .marquee-content img {
+    width: 300px;
     margin-right: 70px;
     border-radius: 50px;
   }
 
+  /* Keyframe for smooth infinite scroll */
   @keyframes scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-25%); }
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-25%);
+    }
   }
-
-  /* BOOK NOW BUTTON */
+ 
+    /* BOOK NOW BUTTON */
   .book-btn {
     display: inline-block;
     background-color: #F5DFA8;
@@ -68,7 +78,7 @@
     font-size: 22px;
     color: #4A1E1E;
     text-decoration: none;
-    margin-top: 670px;
+    margin-top: 680px;
     cursor: pointer;
     border: 2px solid #4A1E1E;
   }
@@ -88,6 +98,7 @@
     background: rgba(0,0,0,0.5);
     justify-content: center;
     align-items: center;
+    z-index: 9999;
   }
 
   /* POPUP BOX */
@@ -116,54 +127,57 @@
     border: none;
     border-radius: 20px;
   }
+  
 </style>
 </head>
 <body>
 
-<h2 class="subtitle">Our Works</h2>
-<h1 class="title">DEBUT</h1>
+  <h2 class="subtitle">Our Works</h2>
+  <h1 class="title">SCHOOL CEREMONIES</h1>
 
-<div class="debut">
-  <div class="debut-content">
-    <img src="https://bit.ly/3JTFwJr">
-    <img src="https://bit.ly/4ptYFRf">
-    <img src="https://bit.ly/4og9ntD">
-    <img src="https://shorturl.at/faKR1">
+<div class="marquee">
+  <div class="marquee-content">
     
-    <img src="https://bit.ly/3JTFwJr">
-    <img src="https://bit.ly/4ptYFRf">
-    <img src="https://bit.ly/4og9ntD">
-    <img src="https://shorturl.at/faKR1">
-    
-    <img src="https://bit.ly/3JTFwJr">
-    <img src="https://bit.ly/4ptYFRf">
-    <img src="https://bit.ly/4og9ntD">
-    <img src="https://shorturl.at/faKR1">
-    
-    <img src="https://bit.ly/3JTFwJr">
-    <img src="https://bit.ly/4ptYFRf">
-    <img src="https://bit.ly/4og9ntD">
-    <img src="https://shorturl.at/faKR1">
-    
-    <img src="https://bit.ly/3JTFwJr">
-    <img src="https://bit.ly/4ptYFRf">
-    <img src="https://bit.ly/4og9ntD">
-    <img src="https://shorturl.at/faKR1">
-    
-    <img src="https://bit.ly/3JTFwJr">
-    <img src="https://bit.ly/4ptYFRf">
-    <img src="https://bit.ly/4og9ntD">
-    <img src="https://shorturl.at/faKR1">
-        
-    <img src="https://bit.ly/3JTFwJr">
-    <img src="https://bit.ly/4ptYFRf">
-    <img src="https://bit.ly/4og9ntD">
-    <img src="https://shorturl.at/faKR1">
-    
-    <img src="https://bit.ly/3JTFwJr">
-    <img src="https://bit.ly/4ptYFRf">
-    <img src="https://bit.ly/4og9ntD">
-    <img src="https://shorturl.at/faKR1">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+
+    <!-- duplicates para mukhang infinite -->
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
+    <img src="pics/school_ceremonies.png">
   </div>
 </div>
 
@@ -191,6 +205,5 @@ function closePopup(event) {
   }
 }
 </script>
-
 </body>
 </html>

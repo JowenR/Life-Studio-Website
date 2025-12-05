@@ -79,7 +79,7 @@ p {
 }
 
 
-
+    
 
 .wedding,
 .debut,
@@ -144,6 +144,7 @@ p {
     align-items: center;
     margin-right: 125px;
     margin-left: 125px;
+    
 
 }
 
@@ -164,16 +165,6 @@ p {
     background: #E6DEC8;
     z-index: 0;
     margin-left: -65px;
-}
-
-.bgid {
-    position: absolute;
-    width: 347px;
-    height: 387px;
-    border-radius: 30px;
-    background: #E6DEC8;
-    z-index: 0;
-    margin-left: 10px;
 }
 
 .bgid {
@@ -210,7 +201,7 @@ img {
     z-index: 1;
     display: block;
     margin-left: -67px;
-
+    
 }
 
 .pic-id img {
