@@ -31,7 +31,17 @@ body {
     z-index: 30;
     white-space: nowrap;
     pointer-events: none;
+
+     text-shadow:
+    -2px -2px 0 #FFF6EB,   /* top-left cream outline */
+     2px -2px 0 #FFF6EB,   /* top-right cream outline */
+    -2px  2px 0 #FFF6EB,   /* bottom-left cream outline */
+     2px  2px 0 #FFF6EB,   /* bottom-right cream outline */
+     6px  6px 0 #bc9f78,   /* soft brown-ish shadow (matches palette) */
+     10px 10px 5px rgba(0,0,0,0.25);
   }
+
+  
   
 
 /* MAIN CONTAINER */
@@ -45,25 +55,26 @@ body {
   justify-content: center;
   position: relative;
   background-color: #F6DC9B;
+  border-radius: 40px;
 }
 
 /* TRACK VIEW BOX */
 .carousel-track-wrapper {
   overflow: hidden;
-  width: 80%;
+  width: 120%;
 }
 
 /* MOVING STRIP */
 .carousel-track {
   display: flex;
-  gap: 30px;
+  gap: 10px;
   transition: transform .3s ease-in-out;
 }
 
 /* IMAGES */
 .carousel-track img {
   width: 25%;
-  border-radius: 20px;
+  border-radius: 40px;
   cursor: pointer;
   transition: .3s ease;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -117,7 +128,7 @@ body {
 
 .book-btn {
   display: inline-block;
-  margin: 240px auto 200px;
+  margin: 230px auto 200px;
   font-size: 22px;
   background: #F5DFA8;
   padding: 14px 30px;
