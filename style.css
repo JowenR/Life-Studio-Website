@@ -27,8 +27,8 @@
         body{
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
-            background-image: url(images/background.png);
-            object-fit: cover;
+            background: #FFFFFF;
+            background: linear-gradient(90deg,rgba(255, 255, 255, 1) 50%, rgba(234, 219, 179, 1) 100%);
             
         }
 
@@ -77,50 +77,41 @@
         .img1{
             position: relative;
             top: 120px;
-            left: 800px;
+            left: 900px;
             object-fit: cover;
+            
         }
 
-        .img2{
+        #title{
+            position: absolute;
+            top: 150px;        /* adjust position */
+            left: 65px;
+            z-index: 10;       /* makes it appear in front */
+            font-size: 45px;
+            color: black;      /* or any color that stands out */
+            
+        }
+        main {
+            position: relative;   /* required so #bold positions inside main */
+        }
+        .img1 img {
             position: relative;
-            top: 115px;
-            left: 800px;
-            object-fit: cover;
-        }
-    
-        .img3{
-            position: relative;
-            bottom: 130px;
-            object-fit: cover;
-            right: 50px;
+            z-index: 1;           /* image stays behind */
         }
 
-        .img4{
-            position: relative;
-            bottom: 640px;
-            object-fit: cover;
-            right: 50px ;
-
+        #paragraph{
+            position: absolute;
+            top: 350px;        /* adjust position */
+            left: 65px;
+            z-index: 10;       /* makes it appear in front */
+            font-size: 20px;
+            color: #524D3E; 
         }
 
-        button{
-            background-color: #F6ECD0;
-            border-radius: 10px;
-            height: 30px;
-            width: 120px;
-            border: #F6ECD0;
-            position: relative;
-            left: 1015px;
-            bottom: 480px;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-            transition: 0.3s ease;
 
-        }
 
-        button:hover {
-        background-color: #e3d4b3;
-        transform: scale(1.05);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-        cursor: pointer;
-        transition: 0.3s ease;
-        }
+        
+
+        
+
+        
