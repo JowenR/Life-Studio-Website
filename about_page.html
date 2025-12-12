@@ -9,6 +9,84 @@
     <link rel="stylesheet" href="style.css">
     <style>
 
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1500;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #333;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        /* Slide-in Mobile Menu */
+        nav.mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            padding-top: 120px;
+            box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.4s ease;
+            z-index: 1400;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav.mobile-nav.show {
+            right: 0;
+        }
+
+        nav.mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            padding-left: 40px;
+        }
+
+        nav.mobile-nav a {
+            font-size: 22px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            header {
+                padding: 15px 25px;
+            }
+
+            main {
+                padding-top: 120px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .img1 img, .img2 img, .img3 img, .img4 img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
         
 
     </style>
