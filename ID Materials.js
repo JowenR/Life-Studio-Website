@@ -4,10 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
      0. PRELOAD IMAGES (fast loading)
   ---------------------------------------- */
   const preloadImages = [
-    "Ordination_pics\ORDINATION(1).jpg",
-    "Ordination_pics\ORDINATION(2).jpg",
-    "Ordination_pics\ORDINATION(3).jpg",
-    "Ordination_pics\ORDINATION(4).jpg"
+    "School ID\School_ID(1).png",
+    "School ID\School_ID(2).png",
+    "School ID\School_ID(3).png",
+    "School ID\School_ID(4).png",
+    "School ID\School_ID(5).png",
+    "School ID\School_ID(6).png"
   ];
   preloadImages.forEach(src => { const img = new Image(); img.src = src; });
 
