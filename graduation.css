@@ -74,6 +74,8 @@ body {
 /* IMAGES */
 .carousel-track img {
   width: 25%;
+  height: 512px;
+  object-fit: cover;
   border-radius: 40px;
   cursor: pointer;
   transition: .3s ease;
